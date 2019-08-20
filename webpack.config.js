@@ -1,3 +1,12 @@
+/*
+Problem:
+1. must use <base href="../"> in wiki folder element to have access to imgs
+2. also imgs in css files not work at all (must include / or ../ in base tag)
+
+for now:
+i will hardcode the template and css files to using img from extranal path 
+*/
+
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');

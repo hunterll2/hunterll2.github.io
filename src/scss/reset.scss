@@ -1,0 +1,95 @@
+/* Variables  */
+    /* Backgrounds 
+    url('../assests/images/background.jpg')
+    url('../assests/images/glow.png')
+    */
+    $bg-main: #282828;
+    $bg-glow: #bbb;
+
+    /* Fonts */
+    $serif: "Harmattan", serif;
+    $sans: "Tajawal", sans-serif;
+
+    /* Fonts Size  */
+    $x-small: .5rem;
+    $small: .75rem;
+    $normal: .875rem;
+    $large: 1rem;
+
+    /* Speeds */
+    $fast: .2s;
+    $medium: .4s;
+    $slow: .7s;
+
+    /* Colors */
+    $black: hsl(0, 0%, 7%);
+    $dark: hsl(0, 0%, 21%);
+    $gray: #999;
+    $white-smoke: #bbb;
+    $light: hsl(0, 0%, 86%);
+    $red: hsl(348, 100%, 61%);
+    $blue: hsl(217, 71%, 53%);
+    $green: hsl(141, 71%, 48%);
+    $yellow: hsl(48, 100%, 67%);
+    $white-transparent: rgba(255, 255, 255, 0.1);
+    $black-transparent: rgba(0, 0, 0, 0.1);
+    $blue-transparent: rgba(0, 0, 255, 0.1);
+    $blue-black: linear-gradient(to bottom, var(--blue-transparent), var(--black-transparent));
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  html {
+    direction: rtl;
+  }
+  
+  button {
+   cursor: pointer;
+   border: none;
+   outline: none;
+   background: transparent;
+  }
+  
+  a {
+   text-decoration: none;
+  }
+  
+  input,
+  textarea {
+   outline: none;
+   direction: ltr;
+   background: transparent;
+  }
+  
+  input[type="submit"] {
+   cursor: pointer;
+   text-align: center;
+  }
+  
+  input[type="search"] {
+   border: none;
+  }
+
+  /* ToolTip */
+.ui-tooltip {
+  background: #282828;
+  color: $white-smoke;
+  box-shadow: none;
+  border: 1px solid #333 !important;
+  font-size: $small;
+  font-family: $sans;
+  padding: 5px 10px;
+ }
+ 
+ .ui-tooltip-content::after {
+  content: "";
+  position: absolute;
+  left: 46.5%;
+  top: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #333 transparent transparent transparent;
+ }
