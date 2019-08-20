@@ -1,1 +1,386 @@
 @import "./standard.scss";
+
+/* ==================== Global Classes ==================== */
+.hidden {
+  display: none !important;
+}
+
+.hiddenToUp {
+  height: 0px !important;
+  border-bottom: 0px solid #333 !important;
+  overflow: hidden;
+}
+
+.float-left {
+  float: left;
+  text-align: left;
+}
+
+.activeBtn,
+.activeBtn i {
+  color: #ccc !important;
+  font-weight: bold;
+}
+
+.unactive * {
+  color: var(--gray);
+}
+
+.unactive ul {
+  display: none;
+}
+
+.unactive .fa-eye-slash {
+  display: block;
+}
+
+/* Directions */
+.ltr {
+  direction: ltr !important;
+}
+
+.ltr ul {
+  margin-right: 0px;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+input.rtl:focus {
+  border: 1px solid #333;
+  border-right: 10px solid #333;
+}
+
+/* ======================================================================================
+            ==================== Structre & Desgin ====================
+   ====================================================================================== */
+/* ===========================================
+      ========== Site Structre ==========
+============================================== */
+body {
+  width: 800px;
+  max-width: 100%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+}
+
+body > aside {
+  width: 160px;
+}
+
+body > main {
+  width: calc(100% - 160px);
+  position: relative;
+}
+
+/* Side Section */
+aside > header {
+  height: 220px;
+}
+
+aside > main {
+  height: calc(100% - 260px);
+}
+
+aside > footer {
+  height: 40px;
+}
+
+/* Main Section */
+main > header {
+  height: auto;
+}
+
+main > main {
+  height: calc(100% - 90px);
+}
+
+/* Full Page Mode */
+body.fullPage aside {
+  width: 0px;
+}
+
+body.fullPage aside * {
+  opacity: 0;
+}
+
+body.fullPage main {
+  width: 100%;
+}
+
+/* ===========================================
+         ========== Site Design ==========
+   ============================================== */
+body {
+  border-left: 2px solid #333;
+  text-shadow: 1px 1px black;
+}
+
+body > main {
+  background: $black-transparent;
+}
+
+body > aside {
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px #111;
+}
+
+main,
+aside,
+header,
+footer,
+header > * {
+  overflow: hidden;
+  transition: $medium;
+}
+
+/* child */
+main > header > * {
+  border-bottom: 1px solid #333;
+}
+
+aside > footer {
+  border-top: 1px solid #333;
+}
+
+/* ======================================================================================
+                      ==================== Aside ====================
+      ====================================================================================== */
+/* ===========================================
+          ========== Aside Header ==========
+   ============================================== */
+aside > header {
+  text-align: center;
+}
+
+aside > header > * {
+  margin: 10px auto;
+}
+
+aside > header > #siteTerm {
+  font-weight: bold;
+  font-size: $small;
+}
+
+aside > header img {
+  opacity: 0.7;
+  width: 65px;
+  height: 130px;
+  margin-bottom: 0px;
+}
+
+aside header > hr {
+  width: 70%;
+  border: none;
+  border-bottom: 1px solid #333;
+}
+
+#siteLinks > a > i {
+  margin: 0 10px;
+  font-size: 21px;
+}
+
+/* ===========================================
+          ========== Aside Main ==========
+   ============================================== */
+aside > main {
+  position: relative;
+}
+
+/* Side Title */
+aside > main h2 {
+  font-size: $normal;
+  padding: 10px 10px 5px 5px;
+  border-bottom: 1px solid #333;
+}
+
+aside > main h2 > i {
+  font-size: smaller;
+  color: $white-smoke;
+}
+
+/* Side Navs */
+.sideNavs h2 {
+  cursor: pointer;
+}
+
+.sideNavs h2 > .hideIcon {
+  display: none;
+  float: left;
+  line-height: 2;
+}
+
+/* Exceptions */
+#articleNav.unactive {
+  position: absolute;
+  width: 100%;
+  bottom: -1px;
+}
+
+.sideNavs.unactive #articleNav {
+  position: initial;
+  bottom: initial;
+}
+
+/* ========== Sign Form ========== */
+#signForm {
+  padding: 0 5px;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+#signUp_submit {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 10px;
+}
+
+#signTools label {
+  float: right;
+  padding: 0px;
+  font-size: 9px;
+}
+
+#signTools label:last-child {
+  float: left;
+}
+
+/* ===========================================
+         ========== Aside Footer ==========
+   ============================================== */
+#siteTools {
+  display: flex;
+  height: 100%;
+}
+
+#signFormBtn {
+  flex-grow: 1;
+  font-family: $serif;
+  font-size: $normal;
+}
+
+/* ======================================================================================
+                         ==================== Main ====================
+      ====================================================================================== */
+/* ===========================================
+          ========== Main Header ==========
+   ============================================== */
+body > main header > * {
+  display: flex;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  background: $black-transparent;
+}
+
+body > main header > * > * {
+  flex-grow: 1;
+}
+
+/* Top Navs */
+#mainNav {
+  background: $blue-black;
+}
+
+#mainNav i {
+  font-size: larger;
+}
+
+/* Top Bars */
+#titleBar,
+#alertsBar {
+  height: 40px;
+  line-height: 40px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+#editTools {
+  width: 190px;
+  margin-left: 10px;
+}
+
+#alertsBar {
+  padding-right: 0px;
+  font-family: $sans;
+  font-size: $small-taj;
+}
+
+#alertsBar input {
+  margin: 3px;
+}
+
+#alertsBar button {
+  width: 140px;
+  font-size: 10px;
+}
+
+/* ===========================================
+          ========== Main Main ==========
+   ============================================== */
+body > main > main {
+  overflow: auto;
+  padding: 10px 16px;
+}
+
+/* ==================== Comments ==================== */
+/* Add Comment [Form] */
+#addComment {
+  display: flex;
+}
+
+#addComment fieldset {
+  margin: 0;
+  flex-grow: 1;
+}
+
+#addComment fieldset:first-child {
+  width: 200px;
+  padding-left: 20px;
+  border-left: 1px solid #333;
+}
+
+#addComment fieldset:nth-child(2) {
+  padding-right: 20px;
+}
+
+#addComment legend {
+  color: $gray;
+  font-style: italic;
+  text-align: center;
+  font-size: $small;
+}
+
+/* ===========================================
+          ========== Main Footer ==========
+   ============================================== */
+body main footer {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  padding: 7px 10px;
+  justify-content: flex-end;
+}
+
+body > main > footer > div {
+  display: flex;
+}
+
+body main footer button {
+  text-shadow: 1px 1px 3px #111;
+  font-weight: bold;
+  font-family: $sans !important;
+  font-size: $small-taj !important;
+}
+
+body main footer button i {
+  font-size: 16px !important;
+}

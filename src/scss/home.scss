@@ -1,91 +1,68 @@
 @import "./standard.scss";
 
-/* ==================== Basic Ruls ==================== */
+/* ==================== Layout ==================== */
 main {
   margin: auto;
   padding: 10px;
   max-width: 600px;
 }
 
-h1 {
-  font-size: $normal;
-  margin-top: 10px;
-}
-
-h1:first-child {
-  margin-top: 0px;
-}
-
-/* Links */
-a {
-  font-size: $small;
-}
-
-.activeBtn i {
-  font-weight: normal;
-}
-/* Basic Ruls [END] */
-
 /* ==================== Header ==================== */
 header {
   padding-top: 50px;
   text-align: center;
+
+  img#siteLogo {    
+    width: 75px;
+    opacity: 0.7;
+  }
+
+  span#siteTerm {
+    display: block;
+    width: 140px;
+    margin: auto;
+    font-weight: bold;
+    padding-top: 7px;
+    border-top: 1px solid #333;
+  }
+
+  div#siteLinks i {
+    margin: 0 10px;
+    font-size: 24px;
+  }
 }
 
-img#siteLogo {
-  width: 75px;
-  opacity: 0.7;
-}
-
-#siteTerm {
-  display: block;
-  width: 140px;
-  margin: auto;
-  font-weight: bold;
-  padding-top: 7px;
-  border-top: 1px solid #333;
-}
-
-#siteLinks i {
-  margin: 0 10px;
-  font-size: 24px;
-}
-
-header > img,
-header > span,
-header > div,
-header > p {
+header > * {
   padding-bottom: 10px;
 }
-/* Header [END] */
 
 /* ==================== Navigation Bar ==================== */
-#siteNav {
+nav#siteNav {
   display: flex;
   margin-bottom: 14px;
   text-align: center;
   border-top: 1px solid #333;
-  /*  background: $black-transparent; */
+  // background: $black-transparent;
+  
+  button {
+    flex-grow: 1;
+    padding: 10px 0;
+    font-size: $small;
+    border: 1px solid transparent;
+    text-shadow: 1px 1px 0 black;
+  }
+  
+  button.activeBtn {
+    color: white;
+    font-weight: bold;
+  }
+  
+  button > i {
+    font-size: larger;
+  }
 }
 
-#siteNav > button {
-  flex-grow: 1;
-  padding: 10px 0;
-  font-size: $small;
-  border: 1px solid transparent;
-  text-shadow: 1px 1px 0 black;
-}
-
-#siteNav > button.activeBtn {
-  color: white;
-  font-weight: bold;
-}
-
-#siteNav > button > i {
-  font-size: larger;
-}
-
-#searchBox {
+input#searchBox {
   padding: 14px;
   border: 1px solid #333;
   background: $black-transparent;
@@ -100,6 +77,15 @@ header > p {
 section {
   margin: 10px 0;
   overflow: auto;
+
+  h1 {
+    font-size: $normal;
+    margin-top: 10px;
+  }
+  
+  h1:first-child {
+    margin-top: 0px;
+  }
 }
 
 section.hide {
@@ -114,11 +100,11 @@ section:not(#gamesList) {
 
 .linksBtn {
   float: left;
-}
 
-.linksBtn i {
-  margin: 0px;
-  margin-right: 7px;
+  i {
+    margin: 0px;
+    margin-right: 7px;
+  }
 }
 
 /* ==================== Games List ==================== */
@@ -126,23 +112,25 @@ section:not(#gamesList) {
   direction: ltr;
   display: flex;
   flex-wrap: wrap;
-}
 
-#gamesList > a {
-  width: 120px;
-  flex-grow: 1;
-  margin: 5px;
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #333;
-  background: $black-transparent;
-}
+  a {
+    width: 120px;
+    flex-grow: 1;
+    margin: 5px;
+    padding: 10px;
+    color: $white-smoke;
+    font-size: $small;
+    text-align: center;
+    border: 1px solid #333;
+    background: $black-transparent;
+  }
 
-#gamesList > a:hover {
-  color: white;
-  background: rgba(0, 0, 0, 0.2);
-}
+  a:hover {
+    color: white;
+    background: rgba(0, 0, 0, 0.2);
+  }
 
-#gamesList > a:active {
-  background: $white-transparent;
+  a:active {
+    background: $white-transparent;
+  }
 }
