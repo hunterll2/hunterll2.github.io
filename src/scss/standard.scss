@@ -10,10 +10,15 @@ body {
   background: $bg-glow left/60% 100% no-repeat fixed, $bg-main;
 }
 
+/* ==================== Links ==================== */
+a {
+  color: $white-smoke;
+}
+
 /* ==================== Icons ==================== */
 i {
   color: $gray;
-  margin-left: 5px;
+  margin-left: 7px;
   font-size: inherit;
   vertical-align: middle;
 }
@@ -24,7 +29,7 @@ a.button {
   padding: 5px 10px;
   color: $white-smoke;
   font-family: $sans;
-  font-size: $small;
+  font-size: $small-taj;
 
   span {
     border: 1px solid #333;
@@ -41,7 +46,7 @@ a.button {
 
 button.icon,
 a.icon {
-  padding: 0px;
+  // padding: 0px;
   margin: auto 0;
 
   i {

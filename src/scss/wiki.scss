@@ -1,5 +1,41 @@
 @import "./standard.scss";
 
+#titleBar > h1 {
+  font-size: $large;
+}
+
+body main main section h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: $large;
+}
+
+body main main section h2:first-child {
+  margin-top: 10px;
+}
+
+* {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+ }
+ ::-webkit-scrollbar {width: 4px}
+ ::-webkit-scrollbar-track {background: $dark}
+ ::-webkit-scrollbar-thumb {background: #222;}
+ 
+ ::selection {background: $white-transparent}
+ 
+ img, i {vertical-align: middle}
+ 
+ ul {
+  list-style: none;
+  list-style-position: inside;
+ }
+ 
+ var {
+  font-style: normal;
+ }
+
 /* ==================== Global Classes ==================== */
 .hidden {
   display: none !important;
@@ -287,10 +323,14 @@ body > main header > * > * {
 /* Top Navs */
 #mainNav {
   background: $blue-black;
-}
 
-#mainNav i {
-  font-size: larger;
+  a {
+    padding: 0px;
+  }
+
+  i {
+    font-size: larger;
+  }
 }
 
 /* Top Bars */
@@ -304,22 +344,21 @@ body > main header > * > * {
 
 #editTools {
   width: 190px;
-  margin-left: 10px;
 }
 
 #alertsBar {
   padding-right: 0px;
   font-family: $sans;
   font-size: $small-taj;
-}
 
-#alertsBar input {
-  margin: 3px;
-}
-
-#alertsBar button {
-  width: 140px;
-  font-size: 10px;
+  input {
+    margin: 3px;
+  }
+  
+  button {
+    width: 140px;
+    font-size: 10px;
+  }
 }
 
 /* ===========================================
@@ -384,3 +423,139 @@ body main footer button {
 body main footer button i {
   font-size: 16px !important;
 }
+
+/* ========== Game Nav ========== */
+/* Titles */
+#gameNav button {
+  width: 100%;
+  height: 40px;
+  text-align: right;
+  font-family: var(--serif);
+  font-size: var(--nromal);
+
+  i {
+    float: left;
+    margin: 0px;
+    font-size: 9px;
+    line-height: 2.5;
+    text-shadow: 1px 0 #999;
+    transition: var(--fast);
+  }
+}
+
+#gameNav button.activeBtn {
+  border-bottom: 1px solid #333;
+
+  i {
+    transform: rotate(-90deg);
+  }
+}
+
+/* Items */
+#gameNav ul ul {
+  display: none;
+}
+
+/* Path */
+.navPath {
+  display: flex;
+  height: 30px;
+  overflow: hidden;
+  padding-right: 10px;
+  font-size: smaller;
+  border-bottom: 1px solid #333;
+  transition: var(--fast);
+}
+
+.navPath > * {
+  line-height: 30px !important;
+}
+
+.navPath > span {
+  display: none;
+}
+
+.subSection:before {
+  content: "\203a";
+  margin: 0 5px;
+}
+
+/* Links */
+aside nav a {
+  display: block;
+  margin: 10px;
+}
+
+aside nav a > i {
+  font-size: smaller;
+}
+
+#gameNav a:after {
+  content: "\00bb";
+  float: left;
+}
+/* ========== Game Nav [END] ========== */
+
+/* ========== Comments List ========== */
+.comment {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: 1px solid #333;
+  background: var(--bg-black);
+}
+
+#comment-author {
+  width: 75px;
+  min-width: 75px;
+  height: 100px;
+  text-align: center;
+  box-shadow: 0 0 5px #111;
+}
+
+#comment-author img {
+  width: 100%;
+  height: 75px;
+}
+
+#comment-author var {
+  display: block;
+  padding: 3px 0;
+  font-size: var(--small);
+}
+
+/*  */
+.commentSide p {
+  padding: 0 10px 10px;
+  height: calc(100% - 25px);
+}
+
+/*  */
+#commentTools {
+  height: 25px;
+  text-align: left;
+  border-top: 1px solid #333;
+  margin-right: 10px;
+}
+
+#commentTools button,
+#commentTools var {
+  opacity: 0.5;
+}
+
+#commentTools div {
+  display: inline-block;
+}
+
+#commentTools div:before {
+  content: "|";
+  margin-right: 5px;
+  color: #777;
+}
+
+#dislike {
+  transform: rotate(180deg);
+  position: relative;
+  top: 4px;
+}
+/* ========== Comments List [END] ========== */
