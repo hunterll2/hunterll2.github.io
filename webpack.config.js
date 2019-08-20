@@ -2,9 +2,10 @@
 Problem:
 1. must use <base href="../"> in wiki folder element to have access to imgs
 2. also imgs in css files not work at all (must include / or ../ in base tag)
+3. i must declare fonts and 3rd party script in the template
 
 for now:
-i will hardcode the template and css files to using img from extranal path 
+i will hardcode the template and css files to using img from extranal path
 */
 
 const path = require('path');

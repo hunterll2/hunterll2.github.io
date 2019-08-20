@@ -8,96 +8,96 @@ body {
   font-size: $normal;
   color: $white-smoke;
   background: $bg-glow left/60% 100% no-repeat fixed, $bg-main;
- }
+}
 
-/* Icons */
+/* ==================== Icons ==================== */
 i {
-    color: var(--gray);
-    margin-left: 5px;
-    font-size: inherit;
-    vertical-align: middle;
-   }
+  color: $gray;
+  margin-left: 5px;
+  font-size: inherit;
+  vertical-align: middle;
+}
 
-/* Button */
+/* ==================== Button ==================== */
 button,
 a.button {
- padding: 5px 10px;
- color: var(--white-smoke);
- font-family: var(--sans);
- font-size: var(--small);
+  padding: 5px 10px;
+  color: $white-smoke;
+  font-family: $sans;
+  font-size: $small;
 }
 
 button.icon,
 a.icon {
- padding: 0px;
- margin: auto 0;
+  padding: 0px;
+  margin: auto 0;
 }
 
 button.icon > i,
 a.icon > i {
- font-size: 16px;
- margin-left: 0;
+  font-size: 16px;
+  margin-left: 0;
 }
 
 button > span,
 a.button > span {
- border: 1px solid #333;
- background: rgba(0,0,0,.1);
- padding: 5px 10px;
+  border: 1px solid #333;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
 }
 
 button > i + span,
 a.button > i + span {
- border: 0px;
- background: none;
- padding: 0px;
+  border: 0px;
+  background: none;
+  padding: 0px;
 }
 
-/* Mouse Effect */
+/* ==================== Mouse Effect ==================== */
 button:hover,
 a:hover,
 button.icon:hover i,
 a.icon:hover i {
- color: white;
+  color: white;
 }
 
 button:active,
 a:active {
- color: var(--gray);
+  color: $gray;
 }
 
 button:active i,
 a:active i {
- transform: scale(.8);
+  transform: scale(0.8);
 }
 
-/* Form */
+/* ==================== Form ==================== */
 fieldset {
   border: none;
   margin: 14px 0;
 }
 
 fieldset:last-child {
- margin: 0px;
+  margin: 0px;
 }
 
 legend {
- color: var(--gray);
- font-style: italic;
- text-align: center;
- font-size: var(--small);
+  color: $gray;
+  font-style: italic;
+  text-align: center;
+  font-size: $small;
   padding: 0 5px;
 }
 
 label {
- display: inline-block;
- color: var(--gray);
- font-family: var(--sans);
- font-size: var(--small);
+  display: inline-block;
+  color: $gray;
+  font-family: $sans;
+  font-size: $small;
 }
 
 label {
- padding: 20px 7px 10px 0;
+  padding: 20px 7px 10px 0;
 }
 
 label:first-child,
@@ -105,128 +105,128 @@ legend + label {
   padding-top: 0px;
 }
 
-/* Input Structrue */
+/* ==================== Input Structrue ==================== */
 input,
 textarea {
- width: 100%;
- padding: 9px 7px;
- font-family: Verdana;
- font-size: var(--small);
+  width: 100%;
+  padding: 9px 7px;
+  font-family: Verdana;
+  font-size: $small;
 }
 
 input[type="submit"] {
- font-weight: bold;
+  font-weight: bold;
 }
 
 input[type="checkbox"] {
- width: auto;
- margin-left: 5px;
- vertical-align: middle;
+  width: auto;
+  margin-left: 5px;
+  vertical-align: middle;
 }
 
 input[type="search"] {
-text-align: center;
-font-size: var(--normal);
-text-transform: capitalize;
+  text-align: center;
+  font-size: $normal;
+  text-transform: capitalize;
 }
 
 input::placeholder,
 textarea::placeholder,
 input[type="submit"] {
- direction: rtl;
- font-family: var(--sans);
- font-size: 10px;
+  direction: rtl;
+  font-family: $sans;
+  font-size: 10px;
 }
 
 input[type="search"]::placeholder {
- text-align: center;
- font-size: var(--small);
+  text-align: center;
+  font-size: $small;
 }
 
-/* Input Design */
+/* ==================== Input Design ==================== */
 input,
 textarea {
- color: var(--gray);
- border: 1px solid #333;
- transition: var(--fast);
+  color: $gray;
+  border: 1px solid #333;
+  transition: $fast;
 }
 
 input[type="submit"]:hover {
- color: var(--white-smoke);
- background: var(--black-transparent);
+  color: $white-smoke;
+  background: $black-transparent;
 }
 
 input[type="submit"]:active {
- background: var(--white-transparent);
+  background: $white-transparent;
 }
 
 input:focus,
 textarea:focus {
- color: var(--white-smoke);
- background: var(--black-transparent);
+  color: $white-smoke;
+  background: $black-transparent;
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus, 
+input[type="password"]:focus,
 input[type="email"]:focus {
- border-left: 10px solid #333;
+  border-left: 10px solid #333;
 }
 
-/* List */
+/* ==================== List ==================== */
 ul.navList,
 ul.menu,
 ul.menu ul {
- list-style: none;
- margin: 0px !important;
+  list-style: none;
+  margin: 0px !important;
 }
 
 ul a {
- display: block;
- margin: 10px;
+  display: block;
+  margin: 10px;
 }
 
 ul a > i {
- font-size: smaller;
+  font-size: smaller;
 }
 
- /* menu */
- .menuPath {
-    display: none;
-   }
-   
-   .menu {
-    width: 200px;
-    background: gray;
-   }
-   
-   .menu button {
-    width: 100%;
-    height: 40px;
-    text-align: right;
-    font-family: var(--serif);
-    font-size: var(--nromal);
-   }
-   
-   .menu button > i {
-    float: left;
-    margin: 0px;
-    font-size: 9px;
-    line-height: 2.5;
-   }
-   
-   .menu button.activeBtn {
-    border-bottom: 1px solid #333;
-   }
-   
-   .menu button.activeBtn i {
-    transform: rotate(-90deg);
-   }
-   
-   .menu ul {
-    display: none;
-   }
-   
-   .menu a:after {
-    content: "\00bb";
-    float: left;
-   }
+/* ==================== menu ==================== */
+.menuPath {
+  display: none;
+}
+
+.menu {
+  width: 200px;
+  background: gray;
+}
+
+.menu button {
+  width: 100%;
+  height: 40px;
+  text-align: right;
+  font-family: $serif;
+  font-size: $normal;
+}
+
+.menu button > i {
+  float: left;
+  margin: 0px;
+  font-size: 9px;
+  line-height: 2.5;
+}
+
+.menu button.activeBtn {
+  border-bottom: 1px solid #333;
+}
+
+.menu button.activeBtn i {
+  transform: rotate(-90deg);
+}
+
+.menu ul {
+  display: none;
+}
+
+.menu a:after {
+  content: "\00bb";
+  float: left;
+}
