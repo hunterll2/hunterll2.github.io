@@ -45,15 +45,19 @@ html {
   direction: rtl;
 }
 
+a {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: bottom;
+}
+
 button {
   cursor: pointer;
   border: none;
   outline: none;
   background: transparent;
-}
-
-a {
-  text-decoration: none;
 }
 
 input,

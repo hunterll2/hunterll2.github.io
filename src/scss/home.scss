@@ -10,30 +10,35 @@ main {
 /* ==================== Header ==================== */
 header {
   padding-top: 50px;
+  padding-bottom: 10px;
   text-align: center;
 
-  img#siteLogo {    
+  img#siteLogo {
     width: 75px;
+    height: 150px;
     opacity: 0.7;
+  }
+
+  hr {
+    width: 140px;
+    margin: auto;
+    border: none;
+    border-bottom: 1px solid #333;
   }
 
   span#siteTerm {
     display: block;
-    width: 140px;
-    margin: auto;
     font-weight: bold;
-    padding-top: 7px;
-    border-top: 1px solid #333;
   }
 
   div#siteLinks i {
     margin: 0 10px;
     font-size: 24px;
   }
-}
 
-header > * {
-  padding-bottom: 10px;
+  > * {
+    margin-top: 10px !important;
+  }
 }
 
 /* ==================== Navigation Bar ==================== */

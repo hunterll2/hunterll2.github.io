@@ -90,81 +90,83 @@ input.rtl:focus {
   border-right: 10px solid #333;
 }
 
-/* ======================================================================================
-            ==================== Structre & Desgin ====================
-   ====================================================================================== */
-/* ===========================================
-      ========== Site Structre ==========
-============================================== */
+/* ============================================================================
+          =================== Structre & Desgin ===================
+=============================================================================== */
+/* ==================== Site Structre ==================== */
 body {
   width: 800px;
   max-width: 100%;
   height: 100vh;
   margin: auto;
   display: flex;
-}
 
-body > aside {
-  width: 160px;
-}
+  > aside {
+    width: 160px;
 
-body > main {
-  width: calc(100% - 160px);
-  position: relative;
-}
+    header {
+      height: 240px;
+    }
+    
+    main {
+      height: calc(100% - 280px);
+    }
+    
+    footer {
+      height: 40px;
+    }
+  }
+  
+  > main {
+    width: calc(100% - 160px);
+    position: relative;
 
-/* Side Section */
-aside > header {
-  height: 220px;
-}
-
-aside > main {
-  height: calc(100% - 260px);
-}
-
-aside > footer {
-  height: 40px;
-}
-
-/* Main Section */
-main > header {
-  height: auto;
-}
-
-main > main {
-  height: calc(100% - 90px);
+    header {
+      height: auto;
+    }
+  
+    main {
+      height: calc(100% - 90px);
+    }
+  }
 }
 
 /* Full Page Mode */
-body.fullPage aside {
-  width: 0px;
+body.fullPage {
+  aside {
+    width: 0px;
+
+    * {opacity: 0;}
+  }
+  
+  main {
+    width: 100%;
+  }
 }
 
-body.fullPage aside * {
-  opacity: 0;
-}
-
-body.fullPage main {
-  width: 100%;
-}
-
-/* ===========================================
-         ========== Site Design ==========
-   ============================================== */
+/* ==================== Site Design ==================== */
 body {
   border-left: 2px solid #333;
   text-shadow: 1px 1px black;
-}
+  
+  > aside {
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px #111;
 
-body > main {
-  background: $black-transparent;
-}
+    footer {
+      border-top: 1px solid #333;
+    }
+  }
 
-body > aside {
-  border-left: 1px solid #333;
-  border-right: 1px solid #333;
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 5px #111;
+  > main {
+    background: $black-transparent;
+
+    header > * {
+      border-bottom: 1px solid #333;
+    }
+  }
 }
 
 main,
@@ -176,50 +178,42 @@ header > * {
   transition: $medium;
 }
 
-/* child */
-main > header > * {
-  border-bottom: 1px solid #333;
-}
+/* ============================================================================
+          ======================== Aside ========================
+=============================================================================== */
+/* ==================== Aside Header ==================== */
+aside {
+  header {
+    text-align: center;
 
-aside > footer {
-  border-top: 1px solid #333;
-}
+    img#siteLogo {
+      width: 75px;
+      height: 150px;
+      opacity: 0.7;
+    }
 
-/* ======================================================================================
-                      ==================== Aside ====================
-      ====================================================================================== */
-/* ===========================================
-          ========== Aside Header ==========
-   ============================================== */
-aside > header {
-  text-align: center;
-}
+    hr {
+      width: 70%;
+      margin: auto;
+      border: none;
+      border-bottom: 1px solid #333;
+    }
 
-aside > header > * {
-  margin: 10px auto;
-}
+    span#siteTerm {
+      display: block;
+      font-weight: bold;
+      font-size: $small;
+    }
 
-aside > header > #siteTerm {
-  font-weight: bold;
-  font-size: $small;
-}
+    div#siteLinks i {
+      margin: 0 10px;
+      font-size: 24px;
+    }
 
-aside > header img {
-  opacity: 0.7;
-  width: 65px;
-  height: 130px;
-  margin-bottom: 0px;
-}
-
-aside header > hr {
-  width: 70%;
-  border: none;
-  border-bottom: 1px solid #333;
-}
-
-#siteLinks > a > i {
-  margin: 0 10px;
-  font-size: 21px;
+    > * {
+      margin-top: 10px !important;
+    }
+  }
 }
 
 /* ===========================================
