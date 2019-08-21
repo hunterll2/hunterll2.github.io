@@ -1,0 +1,500 @@
+/* =========================================================================
+           ==================== Article ====================
+=========================================================================== */
+article {
+  text-align: justify;
+  font-size: $normal;
+  cursor: auto !important;
+  user-select: text !important;
+}
+
+/* Titles */
+article h2 {
+  font-size: $large;
+  overflow: auto;
+  padding: 0 5px 5px;
+  margin: 25px 0 10px;
+  border-bottom: 1px solid #333;
+}
+
+article h2:first-of-type {
+  margin-top: 5px;
+}
+
+article h2 > i {
+  margin: 0;
+  display: none !important;
+  float: left;
+  font-size: 14px;
+  color: $gray;
+  line-height: 22px !important;
+}
+
+/* subtitles */
+article h3 {
+  margin: 25px 10px 15px;
+  color: $white-smoke;
+  font-size: $large;
+}
+
+article h3.withIcon {
+  margin-right: 0px;
+}
+
+/* Paragraphs */
+article p {
+  margin: 10px 0;
+}
+
+/* Lists */
+article ul {
+  list-style-type: disc;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 420px) {
+  article h2 {
+    padding: 10px;
+    background: $black-transparent;
+  }
+
+  article h2:first-of-type {
+    margin-top: 25px;
+  }
+
+  article h2:active {
+    background: $blue-transparent;
+  }
+
+  article h2.active {
+    border-color: $blue-transparent;
+  }
+
+  article h2 + div {
+    display: none;
+  }
+
+  article h2 > i {
+    display: block !important;
+  }
+}
+
+/* ======================================================================
+                      ========== Tools Tip ==========
+   ========================================================================= */
+.link-inside {
+  color: $green;
+}
+.link-notExist {
+  color: $red;
+}
+.link-out {
+  color: $blue;
+}
+
+/* =========================================================================
+                  ==================== Tables ====================
+   ============================================================================ */
+.tableContiner {
+  max-width: 100%;
+  margin: 0 auto 30px;
+  position: relative;
+}
+
+article table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  box-shadow: 0 0 1px #111;
+  font-size: $small;
+}
+
+article table td,
+article table th {
+  padding: 5px;
+  border: 1px solid #333;
+}
+
+article table th {
+  background: $black-transparent;
+}
+
+article table caption {
+  margin-bottom: 5px;
+  font-style: italic;
+  color: $gray;
+}
+
+/* ========== Nested Table ========== */
+td > table {
+  margin: 0;
+  width: 100%;
+  box-shadow: none;
+}
+
+td > table td,
+td > table th {
+  border: 1px solid #333 !important;
+}
+
+td > table th {
+  width: 30px;
+}
+
+.twoColumns th {
+  width: 75px;
+}
+.twoColumnsIcon td {
+  text-align: right;
+  padding-right: 5px !important;
+}
+
+/* codes for correct the border problem */
+.sideTable th {
+  border: 0px;
+}
+.sideTable td {
+  border: 0px;
+  padding: 0px;
+}
+.sideTable tr:first-child td {
+  border: 1px solid #333;
+}
+.sideTable th {
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+
+/* ========== Side Tables ========== */
+.sideTable {
+  float: left;
+  width: 175px;
+  margin-right: 16px;
+  background: $black-transparent;
+}
+
+.sideTable img {
+  width: 100%;
+}
+
+.sideTable th {
+  padding: 8px 5px;
+}
+
+/* ======================================================================
+                     ========== Center Tables ========== 
+   ========================================================================= */
+/* ============================== Design ============================== */
+table.centerTable th {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+table.centerTable tr:nth-child(even) td {
+  background: $black-transparent;
+}
+
+table.centerTable:hover tr td {
+  background: transparent;
+}
+
+table.centerTable td.hover,
+table.centerTable:not(.topTitle) tr:hover td {
+  background: $black-transparent !important;
+}
+
+table.centerTable td:hover {
+  color: white !important;
+}
+
+/* ============================== Structure ============================== */
+/* Side Desgin */
+table.sideTitle th:first-child,
+table.doubleTitle thead th:first-child {
+  width: 100px;
+}
+
+table.sideTitle tbody th:nth-child(1),
+table.doubleTitle tbody th:nth-child(1) {
+  text-align: right;
+}
+
+table.doubleTitle thead th:first-child {
+  color: $gray;
+  font-style: italic;
+}
+
+table tbody th:nth-child(1) > i {
+  margin: 0 5px;
+}
+
+/* Top Desgin */
+table.topTitle.cols-8-to-11 thead th > i,
+table.doubleTitle.cols-8-to-11 thead th > i {
+  display: block;
+  margin: 3px auto;
+}
+
+table.topTitle.cols-12-to-n thead th > i + span,
+table.doubleTitle.cols-12-to-n thead th > i + span {
+  display: none;
+}
+
+table.topTitle.cols-12-to-n thead th > i,
+table.doubleTitle.cols-12-to-n thead th > i {
+  margin: 0px;
+}
+
+/* = mixTable Top Title */
+table.mixTable thead th > i + span {
+  display: none;
+}
+
+table.mixTable.topTitle thead th:nth-child(1) > span,
+table.mixTable.doubleTitle thead th:nth-child(2) > span {
+  display: inline-block;
+}
+
+table.mixTable.topTitle thead th:nth-child(1) > i,
+table.mixTable.doubleTitle thead th:nth-child(2) > i {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* Text Align */
+table.txtTable.sideTitle td:nth-child(2),
+table.txtTable.doubleTitle td:nth-child(2),
+table.mixTable.doubleTitle td:nth-child(2) {
+  text-align: right;
+  vertical-align: top;
+}
+
+table.txtTable.topTitle td {
+  vertical-align: top;
+}
+
+/* ============================== Tables classes ============================== */
+table.fixed-width {
+  table-layout: fixed;
+}
+
+/* ============================== Tables on small screen ============================== */
+@media screen and (max-width: 600px) {
+  table.numTable.topTitle thead th > i + span,
+  table.numTable.doubleTitle thead th > i + span {
+    display: none;
+  }
+
+  .sideTable {
+    float: none;
+    margin: auto;
+  }
+
+  table.sideTitle th:first-child,
+  table.doubleTitle thead th:first-child {
+    width: 100px;
+  }
+}
+
+/* ==================== Tables Buttons ==================== */
+.tableContiner button {
+  width: 40px;
+  height: calc(100% - 20px);
+  position: absolute;
+  bottom: 0;
+  left: -16px; /* same as padding */
+  border: none;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+  transition: $fast;
+}
+
+.tableContiner button > i {
+  margin: 0px;
+  position: absolute;
+  transition: $fast;
+}
+
+.tableContiner button.prev {
+  background: linear-gradient(to right, rgba(0, 0, 255, 0.1), rgba(0, 0, 0, 0));
+}
+
+.tableContiner button.prev > i {
+  transform: rotate(180deg);
+}
+
+/* ==================== Magnifier Data & Row ==================== */
+#magnifierBox,
+#magnifierTable {
+  display: none;
+  width: 90%;
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  z-index: 2;
+  background: #282828;
+}
+
+/* Magnifier Box */
+#magnifierBox {
+  padding: 10px;
+  border: 1px solid #333;
+  font-size: $large;
+}
+
+/* Magnifier Table */
+#magnifierTable {
+  border: 0px solid #111;
+  border-collapse: collapse;
+}
+
+#magnifierTable th,
+#magnifierTable td {
+  padding: 7px;
+  border: 1px solid #333;
+}
+
+#magnifierTable tr:first-child > th {
+  width: 100px;
+}
+
+/*  *
+   #turnLightOff {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0,0,0,.3);
+   }
+   
+   /* ======================================================================
+            ==================== Extra Icons ====================
+   ========================================================================= */
+.myIcon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  box-shadow: 0 0 1px #111;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  vertical-align: middle;
+}
+
+/* Basic Stats */
+.level {
+  background-image: url("https://i.ibb.co/6nBfzGS/level.jpg");
+}
+.insight {
+  background-image: url("https://i.ibb.co/XL5kRhH/insight.jpg");
+}
+.blood-echoes {
+  background-image: url("https://i.ibb.co/PWD8Nv8/blood-echoes.jpg");
+}
+.vitality {
+  background-image: url("https://i.ibb.co/Ws9SfTP/vitality.jpg");
+}
+.strength {
+  background-image: url("https://i.ibb.co/rtfNs9k/strength.jpg");
+}
+.skill {
+  background-image: url("https://i.ibb.co/XXQT3sn/skill.jpg");
+}
+.endurance {
+  background-image: url("https://i.ibb.co/k10qDGh/endurance.jpg");
+}
+.bloodtinge {
+  background-image: url("https://i.ibb.co/5MDpX4x/bloodtingue.jpg");
+}
+.arcane {
+  background-image: url("https://i.ibb.co/K06WVDm/arcane.jpg");
+}
+.HP {
+  background-image: url("https://i.ibb.co/5MB7q0f/HP.jpg");
+}
+.stamina {
+  background-image: url("https://i.ibb.co/ths2HgX/stamina.png");
+}
+.discovery {
+  background-image: url("https://i.ibb.co/KDS0YfM/discovery.jpg");
+}
+/* Damage Reduction */
+.arcane-DEF {
+  background-image: url("https://i.ibb.co/gjgGhbP/arcane.jpg");
+}
+.blood {
+  background-image: url("https://i.ibb.co/JtPRMX9/blood.jpg");
+}
+.bolt {
+  background-image: url("https://i.ibb.co/bPD47pd/bolt.jpg");
+}
+.fire {
+  background-image: url("https://i.ibb.co/xJbYVtj/fire.jpg");
+}
+.physical {
+  background-image: url("https://i.ibb.co/34402WT/physical.jpg");
+}
+.VS-blunt {
+  background-image: url("https://i.ibb.co/yPhTdcb/VS-blunt.jpg");
+}
+.VS-thrust {
+  background-image: url("https://i.ibb.co/TMrFBf5/VS-thrust.jpg");
+}
+/* Defensive Stats */
+.beasthood {
+  background-image: url("https://i.ibb.co/1TLVNTL/beasthood.jpg");
+}
+.frenzy-RES {
+  background-image: url("https://i.ibb.co/tspcmxr/frenzy-RES.png");
+}
+.physical-DEF {
+  background-image: url("https://i.ibb.co/M2ZvRXq/physical-DEF.png");
+}
+.rapid-poison-RES {
+  background-image: url("https://i.ibb.co/ZL75M7N/rapid-poison-RES.png");
+}
+.slow-poison-RES {
+  background-image: url("https://i.ibb.co/gzMpLr4/slow-poison-RES.png");
+}
+/* Offensive Stats */
+.arcane-ATK {
+  background-image: url("https://i.ibb.co/CJBjjC4/arcane-ATK.jpg");
+}
+.blood-ATK {
+  background-image: url("https://i.ibb.co/pftDN3x/blood-ATK.jpg");
+}
+.blunt {
+  background-image: url("https://i.ibb.co/vdy8hH6/blunt.png");
+}
+.bolt-ATK {
+  background-image: url("https://i.ibb.co/6thsYnF/bolt-ATK.jpg");
+}
+.durability {
+  background-image: url("https://i.ibb.co/vY8yVTQ/durability.jpg");
+}
+.fire-ATK {
+  background-image: url("https://i.ibb.co/m4DfpLH/fire-ATK.jpg");
+}
+.physical-ATK {
+  background-image: url("https://i.ibb.co/z8NJZ5H/physical-ATK.jpg");
+}
+.QS-bullet-use {
+  background-image: url("https://i.ibb.co/khDRy3q/QS-bullet-use.jpg");
+}
+.thrust {
+  background-image: url("https://i.ibb.co/NZmz1P9/thrust.png");
+}
+/* Special Attack */
+.rapid-poison-ATK {
+  background-image: url("https://i.ibb.co/tQkmth3/rapid-poison-ATK.png");
+}
+.slow-poison-ATK {
+  background-image: url("https://i.ibb.co/n6XNHrQ/slow-poison-ATK.jpg");
+}
+.VS-beasts {
+  background-image: url("https://i.ibb.co/SNvmqBx/VS-beasts.jpg");
+}
+.VS-kin {
+  background-image: url("https://i.ibb.co/CPYFh9h/VS-kin.jpg");
+}

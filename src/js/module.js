@@ -1,4 +1,5 @@
 import { DOM } from "./wiki_dom";
+import { async } from "q";
 
 // init Functions
 const init_module = {
@@ -74,5 +75,23 @@ $(DOM.aside.main).find("#gameNav a").click(function (event) {
         articleName = $currentTarget.text(),
         articleID = $currentTarget.attr("id").substr(8, 1);
     $("#gameNav a").removeClass("activeBtn");
-    fetchPage(articleName, "/wiki/bloodborne/articles/" + articleURL + ".html", 16, ["gameWorld", , articleID]);
+    fetchPage(articleName, "/wiki/bloodborne/articles/" + articleURL + ".html", 16);
+});
+
+/* Fetch Pages */
+async function fetchPage(title, url, commentsCount) {
+    // fetch page
+    $("#titleBar").find("h1").text(title);
+    $("body > main").find("article").load(url);
+
+    $("#commentsCount").text(commentsCount);
+    // $("#article-" + article_id).addClass("activeBtn");
+    $("#articleNav").addClass("unactive");
+}
+
+
+$("article").click(e => {
+    if (e.target.matches("h2")) {
+        
+    }
 });
