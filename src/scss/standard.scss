@@ -1,7 +1,6 @@
 @import "./reset.scss";
 
 body {
-  direction: rtl;
   cursor: default;
   user-select: none;
   font-family: $serif;
@@ -20,7 +19,6 @@ i {
   color: $gray;
   margin-left: 7px;
   font-size: inherit;
-  vertical-align: middle;
 }
 
 /* ==================== Button ==================== */
@@ -46,7 +44,6 @@ a.button {
 
 button.icon,
 a.icon {
-  // padding: 0px;
   margin: auto 0;
 
   i {
@@ -169,4 +166,58 @@ input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus {
   border-left: 10px solid #333;
+}
+
+/* ==================== Global Class ==================== */
+.hidden {
+  display: none !important;
+}
+
+.hiddenToUp {
+  height: 0px !important;
+  border-bottom: 0px solid #333 !important;
+  overflow: hidden;
+}
+
+.float-left {
+  float: left;
+  text-align: left;
+}
+
+.activeBtn,
+.activeBtn i {
+  color: #ccc !important;
+  font-weight: bold;
+}
+
+.unactive * {
+  color: var(--gray);
+}
+
+.unactive ul {
+  display: none;
+}
+
+.unactive .fa-eye-slash {
+  display: block;
+}
+
+/* Directions */
+.ltr {
+  direction: ltr !important;
+}
+
+.ltr ul {
+  margin-right: 0px;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+input.rtl:focus {
+  border: 1px solid #333;
+  border-right: 10px solid #333;
 }

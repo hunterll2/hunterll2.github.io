@@ -35,14 +35,48 @@ $blue-transparent: rgba(0, 0, 255, 0.1);
 $blue-black: linear-gradient(to bottom, $blue-transparent, $black-transparent);
 
 /* ==================== Initial Value ==================== */
+html {
+  direction: rtl;
+}
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
 }
 
-html {
-  direction: rtl;
+* {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: $white-transparent;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: $dark;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #222;
+}
+
+img, i {
+  vertical-align: middle;
+}
+
+ul {
+  list-style: none;
+  list-style-position: inside;
+}
+
+var {
+  font-style: normal;
 }
 
 a {
@@ -67,13 +101,13 @@ textarea {
   background: transparent;
 }
 
+input[type="search"] {
+  border: none;
+}
+
 input[type="submit"] {
   cursor: pointer;
   text-align: center;
-}
-
-input[type="search"] {
-  border: none;
 }
 
 /* ToolTip */

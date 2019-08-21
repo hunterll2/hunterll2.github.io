@@ -1,9 +1,5 @@
 @import "./standard.scss";
 
-#titleBar > h1 {
-  font-size: $large;
-}
-
 body main main section h2 {
   margin-top: 30px;
   margin-bottom: 10px;
@@ -15,120 +11,43 @@ body main main section h2:first-child {
   margin-top: 10px;
 }
 
-* {
-  scroll-behavior: smooth;
-  -webkit-tap-highlight-color: transparent;
- }
- ::-webkit-scrollbar {width: 4px}
- ::-webkit-scrollbar-track {background: $dark}
- ::-webkit-scrollbar-thumb {background: #222;}
- 
- ::selection {background: $white-transparent}
- 
- img, i {vertical-align: middle}
- 
- ul {
-  list-style: none;
-  list-style-position: inside;
- }
- 
- var {
-  font-style: normal;
- }
-
-/* ==================== Global Classes ==================== */
-.hidden {
-  display: none !important;
-}
-
-.hiddenToUp {
-  height: 0px !important;
-  border-bottom: 0px solid #333 !important;
-  overflow: hidden;
-}
-
-.float-left {
-  float: left;
-  text-align: left;
-}
-
-.activeBtn,
-.activeBtn i {
-  color: #ccc !important;
-  font-weight: bold;
-}
-
-.unactive * {
-  color: var(--gray);
-}
-
-.unactive ul {
-  display: none;
-}
-
-.unactive .fa-eye-slash {
-  display: block;
-}
-
-/* Directions */
-.ltr {
-  direction: ltr !important;
-}
-
-.ltr ul {
-  margin-right: 0px;
-  margin-left: 10px;
-  text-align: left;
-}
-
-.rtl {
-  direction: rtl;
-}
-
-input.rtl:focus {
-  border: 1px solid #333;
-  border-right: 10px solid #333;
-}
-
 /* ============================================================================
           =================== Structre & Desgin ===================
 =============================================================================== */
 /* ==================== Site Structre ==================== */
 body {
+  display: flex;
   width: 800px;
+  margin: auto;
   max-width: 100%;
   height: 100vh;
-  margin: auto;
-  display: flex;
 
   > aside {
     width: 160px;
+    display: flex;
+    flex-direction: column;
 
-    header {
-      height: 240px;
-    }
-    
-    main {
-      height: calc(100% - 280px);
-    }
-    
     footer {
-      height: 40px;
+      margin-top: auto;
     }
   }
-  
+
   > main {
     width: calc(100% - 160px);
-    position: relative;
 
     header {
-      height: auto;
+      height: 90px;
     }
-  
+
     main {
       height: calc(100% - 90px);
     }
   }
+}
+
+body > main,
+aside > main {
+  position: relative;
 }
 
 /* Full Page Mode */
@@ -136,9 +55,11 @@ body.fullPage {
   aside {
     width: 0px;
 
-    * {opacity: 0;}
+    * {
+      opacity: 0;
+    }
   }
-  
+
   main {
     width: 100%;
   }
@@ -148,7 +69,7 @@ body.fullPage {
 body {
   border-left: 2px solid #333;
   text-shadow: 1px 1px black;
-  
+
   > aside {
     border-left: 1px solid #333;
     border-right: 1px solid #333;
@@ -216,9 +137,7 @@ aside {
   }
 }
 
-/* ===========================================
-          ========== Aside Main ==========
-   ============================================== */
+/* ==================== Aside Main ==================== */
 aside > main {
   position: relative;
 }
@@ -282,9 +201,7 @@ aside > main h2 > i {
   float: left;
 }
 
-/* ===========================================
-         ========== Aside Footer ==========
-   ============================================== */
+/* ==================== Aside Footer ==================== */
 #siteTools {
   display: flex;
   height: 100%;
@@ -296,12 +213,10 @@ aside > main h2 > i {
   font-size: $normal;
 }
 
-/* ======================================================================================
-                         ==================== Main ====================
-      ====================================================================================== */
-/* ===========================================
-          ========== Main Header ==========
-   ============================================== */
+/* ============================================================================
+          ======================== Main ========================
+=============================================================================== */
+/* ==================== Main Header ==================== */
 body > main header > * {
   display: flex;
   text-align: center;
@@ -336,6 +251,10 @@ body > main header > * > * {
   padding-right: 10px;
 }
 
+#titleBar > h1 {
+  font-size: $large;
+}
+
 #editTools {
   width: 190px;
 }
@@ -348,22 +267,20 @@ body > main header > * > * {
   input {
     margin: 3px;
   }
-  
+
   button {
     width: 140px;
     font-size: 10px;
   }
 }
 
-/* ===========================================
-          ========== Main Main ==========
-   ============================================== */
+/* ==================== Main Main ==================== */
 body > main > main {
   overflow: auto;
   padding: 10px 16px;
 }
 
-/* ==================== Comments ==================== */
+/* ===== Comments [Section] ===== */
 /* Add Comment [Form] */
 #addComment {
   display: flex;
@@ -391,9 +308,7 @@ body > main > main {
   font-size: $small;
 }
 
-/* ===========================================
-          ========== Main Footer ==========
-   ============================================== */
+/* ==================== Main Footer ==================== */
 body main footer {
   display: flex;
   width: 100%;
