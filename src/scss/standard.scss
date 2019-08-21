@@ -221,3 +221,27 @@ input.rtl:focus {
   border: 1px solid #333;
   border-right: 10px solid #333;
 }
+
+/* ==================== Control Tools ==================== */
+#controlTools > * {
+  display: none;
+}
+
+#overlay {
+  width: calc(100% - 160px);
+  height: calc(100% - 90px);
+  background: rgba(0,0,0,0.2);
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1;
+}
+
+@media screen and (max-width: 480px) {
+  #screenSizeIndicator {
+    display: initial;
+  }
+  #titleBar > h1 {
+    font-size: var(--normal);
+  }
+}
