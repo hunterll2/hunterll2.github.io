@@ -1,26 +1,6 @@
 import "../scss/wiki.scss";
-
-const DOM = {
-    main: {
-        header: "body > main > header",
-        main: "body > main > main",
-        footer: "body > main > footer",
-        mainSection: "body > main"
-    },
-    aside: {
-        header: "body > aside > header",
-        main: "body > aside > main",
-        footer: "body > aside > footer",
-        sideSection: "body > aside"
-    },
-    tools: {
-        siteTools: "#siteTools",
-        editTools: "#editTools",
-        artilceTools: "#articleTools",
-        controlTools: "#controlTools",
-        allTools: "#siteTools, #editTools, #articleTools, #controlTools"
-    }
-};
+import { DOM } from "./wiki_dom";
+import "./module";
 
 /* ============================================================================
        =================== PC Module ===================
@@ -78,7 +58,7 @@ const init = () => {
     $(DOM.main.footer).find("button").not("#fullScreenBtn, #searchBtn").show();
 };
 
-/* ======================================== Events Handler ======================================== */
+/* ==================== Events Handler ==================== */
 const btnFunctions = {
     // Site Tools
     showSignForm: () => {
@@ -122,7 +102,7 @@ const btnFunctions = {
     // article Tools
     showComments: () => {
         $("#articleComments").removeClass("hidden").siblings().addClass("hidden");
-        btnFunctions.articleTools.goUp();
+        btnFunctions.goUp();
     },
     goUp: () => {
         $(DOM.main.main).scrollTop(0);
