@@ -37,8 +37,8 @@ $(DOM.aside.main).find("nav h2").click(function (event) {
 =============================================================================== */
 /* ==================== Game Nav ==================== */
 // Main Menu
-$(DOM.aside.main).find("#gameNav > ul > li > button").click(function (event) {
-    let $currentTarget = $(event.currentTarget);
+function firstMenu(event, isHash) {
+    let $currentTarget = isHash === true ? event : $(event.currentTarget);
     $currentTarget.toggleClass("activeBtn");
     $currentTarget.next("ul").toggle();
     $currentTarget.parent().siblings().toggle();
@@ -56,42 +56,70 @@ $(DOM.aside.main).find("#gameNav > ul > li > button").click(function (event) {
     } else {
         init_module.sideNavs();
     }
-});
+}
 
-// Second Menu
-$(DOM.aside.main).find("#gameNav > ul > li > ul button").click(function (event) {
-    let $currentTarget = $(event.currentTarget);
+function secondMenu(event, isHash) {
+    let $currentTarget = isHash === true ? event : $(event.currentTarget);
     $currentTarget.toggleClass("activeBtn");
     $currentTarget.next("ul").toggle();
     $currentTarget.parent().siblings().toggle();
     // show second path
     $(".subSection").fadeToggle().text($currentTarget.text());
-});
-
-// Artilces Link
-$(DOM.aside.main).find("#gameNav a").click(function (event) {
-    const $currentTarget = $(event.currentTarget),
-        articleURL = $currentTarget.attr("id"),
-        articleName = $currentTarget.text(),
-        articleID = $currentTarget.attr("id").substr(8, 1);
-    $("#gameNav a").removeClass("activeBtn");
-    fetchPage(articleName, "/wiki/bloodborne/articles/" + articleURL + ".html", 16);
-});
-
-/* Fetch Pages */
-async function fetchPage(title, url, commentsCount) {
-    // fetch page
-    $("#titleBar").find("h1").text(title);
-    $("body > main").find("article").load(url);
-
-    $("#commentsCount").text(commentsCount);
-    // $("#article-" + article_id).addClass("activeBtn");
-    $("#articleNav").addClass("unactive");
 }
 
+// First Menu
+$(DOM.aside.main).find("#gameNav > ul > li > button").click(firstMenu);
+
+// Second Menu
+$(DOM.aside.main).find("#gameNav > ul > li > ul button").click(secondMenu);
+
+
+/* Fetch Pages */
+['hashchange', 'load'].forEach(e => window.addEventListener(e, () => {
+    if (window.location.hash) {
+        const $El = $(`#gameNav a[href="${window.location.hash}"]`);
+
+        // Game Guide Menu
+        if (e === 'load') {
+            const $El_1st = $El.parents('.menu__1stLevel').attr('id');
+            const $El_2nd = $El.parents('.menu__2ndLevel').attr('id');
+            let $El_btn;
+            if ($El.parents('.menu__2ndLevel')) {
+                $El_btn = $(`#${$El_1st}`).children('button');
+                firstMenu($El_btn, true);
+                
+                $El_btn = $(`#${$El_2nd}`).children('button');
+                secondMenu($El_btn, true);
+            } else {
+                $El_btn = $(`#${$El_1st}`).children('button');
+                firstMenu($El_btn, true);
+            }
+        }
+        
+        // active cur article
+        $("#gameNav a").removeClass("activeBtn");
+        $El.addClass('activeBtn');
+
+        const articleName = $El.text();
+        const articleURL = "/wiki/bloodborne/articles/" + window.location.hash.replace('#', '') + ".html";
+
+        fetchPage(articleName, articleURL, 16);
+    }
+}));
+
+function fetchPage(title, url, commentsCount) {
+    $("#titleBar").find("h1").text(title);
+    $("#commentsCount").text(commentsCount);
+
+    $("body > main").find("article").load(url, (response, status, xhr) => {
+        if (status == 'error') {
+            alert('error');
+        }
+    });
+}
 
 $("article").click(e => {
     if (e.target.matches("h2")) {
-        
+        console.log('yes')
     }
 });
