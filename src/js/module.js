@@ -19,37 +19,38 @@ const init_module = {
 
 // Active and unactive side nav
 $(DOM.aside.main).find("nav h2").click(function (event) {
-    let $currentTarget = $(event.currentTarget).parent();
+    const $curTarget = $(event.currentTarget).parent();
 
-    if ($currentTarget.hasClass("active")) {
+    if ($curTarget.hasClass("active")) {
         init_module.sideNavs();
         init_module.gameNav();
-    } else if ($currentTarget.hasClass("unactive")) {
+    } else if ($curTarget.hasClass("unactive")) {
         init_module.sideNavs();
-        $currentTarget.addClass("active").siblings("nav").addClass("unactive");
+        $curTarget.addClass("active").siblings("nav").addClass("unactive");
     } else {
-        $currentTarget.addClass("active").siblings("nav").addClass("unactive");
+        $curTarget.addClass("active").siblings("nav").addClass("unactive");
     }
 });
 
-/* ============================================================================
-            =================== Aside Section ===================
-=============================================================================== */
 /* ==================== Game Nav ==================== */
 // Main Menu
 function firstMenu(event, isHash) {
     let $currentTarget = isHash === true ? event : $(event.currentTarget);
+
     $currentTarget.toggleClass("activeBtn");
     $currentTarget.next("ul").toggle();
     $currentTarget.parent().siblings().toggle();
+
     // show main path
     $(".navPath").toggleClass("hiddenToUp");
     $(".mainSection").fadeToggle().text($currentTarget.text());
+
     // init subtitles menu
     $("#gameNav > ul > li > ul button").removeClass("activeBtn");
     $("#gameNav > ul > li > ul li").show();
     $("#gameNav > ul > li > ul ul").hide();
     $(".subSection").hide().text("");
+
     // First and Last click
     if ($currentTarget.hasClass("activeBtn")) {
         $("#articleNav").addClass("unactive");
@@ -60,6 +61,7 @@ function firstMenu(event, isHash) {
 
 function secondMenu(event, isHash) {
     let $currentTarget = isHash === true ? event : $(event.currentTarget);
+
     $currentTarget.toggleClass("activeBtn");
     $currentTarget.next("ul").toggle();
     $currentTarget.parent().siblings().toggle();
@@ -67,59 +69,73 @@ function secondMenu(event, isHash) {
     $(".subSection").fadeToggle().text($currentTarget.text());
 }
 
-// First Menu
-$(DOM.aside.main).find("#gameNav > ul > li > button").click(firstMenu);
 
-// Second Menu
-$(DOM.aside.main).find("#gameNav > ul > li > ul button").click(secondMenu);
+$(DOM.aside.main).find('button').click((event) => {
+    if ($(event.currentTarget).parent().attr('class') === 'menu__1st') {
+        firstMenu(event, false)
+    } else {
+        secondMenu(event, false)
+    }
+})
 
-
-/* Fetch Pages */
-['hashchange', 'load'].forEach(e => window.addEventListener(e, () => {
-    if (window.location.hash) {
+/* ==================== Fetch Pages ==================== */
+async function fetchPage() {
+    if (location.hash && !location.hash.startsWith('#_')) {
         const $El = $(`#gameNav a[href="${window.location.hash}"]`);
 
-        // Game Guide Menu
-        if (e === 'load') {
-            const $El_1st = $El.parents('.menu__1stLevel').attr('id');
-            const $El_2nd = $El.parents('.menu__2ndLevel').attr('id');
-            let $El_btn;
-            if ($El.parents('.menu__2ndLevel')) {
-                $El_btn = $(`#${$El_1st}`).children('button');
-                firstMenu($El_btn, true);
-                
-                $El_btn = $(`#${$El_2nd}`).children('button');
-                secondMenu($El_btn, true);
-            } else {
-                $El_btn = $(`#${$El_1st}`).children('button');
-                firstMenu($El_btn, true);
-            }
-        }
-        
         // active cur article
         $("#gameNav a").removeClass("activeBtn");
         $El.addClass('activeBtn');
 
+        // fetch page and set data
         const articleName = $El.text();
         const articleURL = "/wiki/bloodborne/articles/" + window.location.hash.replace('#', '') + ".html";
+        const commentsCount = 16;
 
-        fetchPage(articleName, articleURL, 16);
+        $("#titleBar").find("h1").text(articleName);
+        $("#commentsCount").text(commentsCount);
+        await $("body > main").find("article").load(articleURL, (response, status, xhr) => {
+            if (status == 'error') {
+                alert('error');
+            } else {
+                // update article nav
+                const elements = Array.from($('article h2'));
+
+                $('#articleNav > ul').empty();
+                elements.forEach((el, i) => {
+                const hash = $(elements[i]).attr('id');
+                const title = $(elements[i]).text();
+                $('#articleNav > ul').append(`<li><a href="#${hash}">${title}</a></li>`);
+                });
+            }
+        });
+
+        
     }
-}));
-
-function fetchPage(title, url, commentsCount) {
-    $("#titleBar").find("h1").text(title);
-    $("#commentsCount").text(commentsCount);
-
-    $("body > main").find("article").load(url, (response, status, xhr) => {
-        if (status == 'error') {
-            alert('error');
-        }
-    });
 }
 
-$("article").click(e => {
-    if (e.target.matches("h2")) {
-        console.log('yes')
-    }
+window.addEventListener('hashchange', fetchPage);
+
+window.addEventListener('load', () => {
+    if (location.hash && !location.hash.startsWith('#_')) {
+        fetchPage()
+        
+        const $El = $(`#gameNav a[href="${window.location.hash}"]`);
+        
+        // Game Guide Menu
+        const $El_1st = $El.parents('.menu__1st').attr('id');
+        const $El_2nd = $El.parents('.menu__2nd').attr('id');
+        
+        let $El_btn;
+        if ($El.parents('.menu__2nd')) {
+            $El_btn = $(`#${$El_1st}`).children('button');
+            firstMenu($El_btn, true);
+            
+            $El_btn = $(`#${$El_2nd}`).children('button');
+            secondMenu($El_btn, true);
+        } else {
+            $El_btn = $(`#${$El_1st}`).children('button');
+            firstMenu($El_btn, true);
+        }
+    };
 });

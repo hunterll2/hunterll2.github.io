@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Harmattan|Tajawal">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href=".././styles/wiki.bundle.css" rel="stylesheet"></head>
+</head>
 
 <body>
 
@@ -41,15 +41,66 @@
                         <span class="mainSection"></span>
                         <span class="subSection"></span>
                     </div>
-                    <ul class="menu"></ul>
+                    <ul class="menu" id="bloodborne">
+                        <li class="menu__1stLevel" id="game_world">
+                            <button><i class="fas fa-chevron-left"></i><span>عالم اللعبة</span></button>
+                            <ul>
+                                <li><a href="#about_game"><span>عن اللعبة</span></a></li>
+                                <li><a href="#player_character"><span>الاعب (الصياد)</span></a></li>
+                                <li><a href="#locations"><span>المناطق</span></a></li>
+                                <li><a href="#traders"><span>التجار</span></a></li>
+                                <li><a href="#enemies"><span>الأعداء</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="menu__1stLevel" id="equipment">
+                            <button><i class="fas fa-chevron-left"></i><span>المعدات</span></button>
+                            <ul>
+                                <li class="menu__2ndLevel" id="weapons">
+                                    <button><i class="fas fa-chevron-left"></i><span>الأسلحة</span></button>
+                                    <ul>
+                                        <li><a href="#firearms"><span>الأسلحة النارية</span></a></li>
+                                        <li><a href="#"><span>الأسلحة القتالية</span></a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#attires"><span>الملابس</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="menu__1stLevel" id="items">
+                            <button><i class="fas fa-chevron-left"></i><span>العناصر</span></button>
+                            <ul>
+                                <li class="menu__2ndLevel" id="consumer_items">
+                                    <button><i class="fas fa-chevron-left"></i><span>العناصر الإستهلاكية</span></button>
+                                    <ul>
+                                        <li><a href="#"><span>عنوان مقالة</span></a></li>
+                                        <li><a href="#"><span>عنوان مقالة</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu__2ndLevel" id="materials">
+                                    <button><i class="fas fa-chevron-left"></i><span>المواد</span></button>
+                                    <ul>
+                                        <li><a href="#"><span>عنوان مقالة</span></a></li>
+                                        <li><a href="#"><span>عنوان مقالة</span></a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu__2ndLevel" id="keys">
+                                    <button><i class="fas fa-chevron-left"></i><span>المفاتيح</span></button>
+                                    <ul>
+                                        <li><a href="#"><span>عنوان مقالة</span></a></li>
+                                        <li><a href="#"><span>عنوان مقالة</span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </nav>
                 <nav id="articleNav">
                     <h2 title="فهرس لتنقل بين العناوين الرئيسية ضمن المقالة الحالية">
                         <i class="fas fa-stream"></i><span>العناوين الرئيسية</span><i
                             class="fas fa-eye-slash hideIcon"></i>
                     </h2>
+
                     <ul>
-                        
+                        <li><a href="#firstTitle"><i class="fas fa-paperclip"></i><span>العنوان الأول</span></a></li>
                     </ul>
                 </nav>
             </section>
@@ -120,7 +171,7 @@
                 <button class="icon"><i class="fas fa-broom"></i></button>
             </div>
             <div id="titleBar">
-                <h1></h1>
+                <h1>عنوان الصفحة الحالية</h1>
                 <div class="float-left" id="editTools">
                     <button id="editBtn" title="تعديل المقالة"><i class="fas fa-edit"></i><span>تعديل</span></button>
                     <button id="historyBtn" title="عرض تاريخ التعديلات للمقالة"><i
@@ -182,6 +233,6 @@
     <!--  Scripts  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src=".././scripts/wiki.bundle.js"></script></body>
+</body>
 
 </html>

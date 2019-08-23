@@ -38,6 +38,12 @@ module.exports = {
             template: "./src/template/wiki.html",
             excludeAssets: [/home.bundle.js/, /home.bundle.css/]
         }),
+        new HtmlWebpackPlugin({
+            filename: "./wiki/bloodborne/index.html",
+            title: "Games Guide | Bloodborne",
+            template: "./src/template/wiki.html",
+            excludeAssets: [/home.bundle.js/, /home.bundle.css/]
+        }),
         new HtmlWebpackExcludeAssetsPlugin()
     ],
     module: {
