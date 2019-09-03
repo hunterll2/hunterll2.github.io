@@ -56,6 +56,7 @@ function firstMenu(event, isHash) {
         $("#articleNav").addClass("unactive");
     } else {
         init_module.sideNavs();
+        location.assign('/wiki/bloodborne/')
     }
 }
 
@@ -79,7 +80,7 @@ $(DOM.aside.main).find('button').click((event) => {
 })
 
 /* ==================== Fetch Pages ==================== */
-async function fetchPage() {
+function fetchPage() {
     if (location.hash && !location.hash.startsWith('#_')) {
         const $El = $(`#gameNav a[href="${window.location.hash}"]`);
 
@@ -94,13 +95,14 @@ async function fetchPage() {
 
         $("#titleBar").find("h1").text(articleName);
         $("#commentsCount").text(commentsCount);
-        await $("body > main").find("article").load(articleURL, (response, status, xhr) => {
+        $("body > main").find("article").load(articleURL, (response, status, xhr) => {
             if (status == 'error') {
                 alert('error');
             } else {
                 // update article nav
                 const elements = Array.from($('article h2'));
 
+                $('#articleNav').removeClass('hidden');
                 $('#articleNav > ul').empty();
                 elements.forEach((el, i) => {
                 const hash = $(elements[i]).attr('id');

@@ -22,12 +22,18 @@ export const DOM = {
     }
 };
 
+if (window.location.href.includes('bloodborne')) {
+    $(DOM.main.header).find('h1').text('الصفحة الرئيسية للعبة Bloodborne');
+    $(DOM.main.main).find('article').load('./articles/main.html');
+}
 
 // Game Guide
 if (window.location.href.includes('bloodborne')) {
     const createSection = (name, id, level) => `
         <li class="${level === 'first' ? 'menu__1st' : 'menu__2nd'}" id="${id}">
-            <button>${name}</button>
+            <button>
+                <i class="fas fa-chevron-left"></i><span>${name}</span>
+            </button>
             <ul>
             </ul>
         </li>
@@ -79,13 +85,3 @@ if (window.location.href.includes('bloodborne')) {
         });
     });
 }
-
-
-// Aricle Nav articleNav
-
-// const elements = Array.from($('article h2'));
-// elements.forEach((el, i) => {
-//  const hash = $(elements[i]).attr('id');
-//  const title = $(elements[i]).text();
-//  $('#articleNav > ul').append(`<li><a href="#${hash}">${title}</a></li>`);
-// });
