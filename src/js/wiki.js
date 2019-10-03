@@ -1,7 +1,84 @@
 import "../scss/wiki.scss";
-import { DOM } from "./wiki_dom";
-import "./module";
+import { DOM } from "./assets/dom";
+import loadPage from "./assets/loadPage";
+import { games } from "./assets/data";
 
+const state = {
+    pageTitle: "",
+    pageUrl: "",
+    guideMenu: location.pathname.replace("/wiki/", '').replace("/", '')
+}
+
+/*
+- 
+*/
+
+function getArticleTitle(articleUrl) {
+    const gameGuide = games[state.guideMenu];
+
+    let search;
+    for (let mainSection in gameGuide) {
+      // Get all articles in this section
+      const mainArticles = gameGuide[mainSection].articles;
+      
+      // search for the article that contain the same url
+      search = mainArticles.find(article => article.url === articleUrl);
+      
+      // if find it on main, then finsh the fun and return
+      if (search) {
+        return search.title;
+        
+        // else continue to search on subsections
+      } else {
+        for (let subSection in gameGuide[mainSection]) {
+          const subArticles = gameGuide[mainSection][subSection].articles;
+          
+          // just here on subsections may some time get undifend!
+          // but on main some time get empty arry!
+          if (subArticles) {
+            search = subArticles.find(article => article.url === articleUrl);
+            if (search) {
+              return search.title;
+            }
+          }
+        } // end of sub loop
+      }
+    } // end of main loop
+  }
+
+$(window).on('hashchange load', function(){
+    // if page is article
+    if (location.hash) {
+        const articleUrl = location.hash.replace('#', '');
+
+        // Update state
+        state.pageTitle = getArticleTitle(articleUrl);
+        state.pageUrl   = location.pathname + 'articles/' + articleUrl + '.html';
+
+        // Load page
+        $('h1').text(state.pageTitle);
+        $('article').load(state.pageUrl);
+
+        // Load Components
+
+        // showEditTools();
+        // showUserTools();
+        // showSideGuideMenu();
+        // createArticleNav();
+
+    // if not, then it's the main page of cur game
+    } else {
+        // Update state
+        state.pageTitle = `الصفحة الرئيسية للعبة ${state.guideMenu}`;
+        state.pageUrl   = location.pathname + 'articles/main.html';
+
+        // Load page
+        $('h1').text(state.pageTitle);
+        $('article').load(state.pageUrl);
+
+        // Load Components
+    }
+});
 
 /* ============================================================================
        =================== PC Module ===================

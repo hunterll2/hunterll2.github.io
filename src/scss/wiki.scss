@@ -185,7 +185,7 @@ aside > main {
 
 /* ===== Sign Form ===== */
 #signForm {
-  padding: 10px 5px;
+  padding: 10px;
   position: absolute;
   bottom: 0px;
   width: 100%;
@@ -214,10 +214,11 @@ aside > main {
   display: flex;
   height: 100%;
 
-  #signFormBtn {
+  button {
     flex-grow: 1;
     font-family: $serif;
     font-size: $normal;
+    font-weight: bold;
   }
 }
 
@@ -289,7 +290,7 @@ body main main {
   h2 {
     margin-top: 30px;
     margin-bottom: 10px;
-    text-align: center;
+    // text-align: center;
     font-size: $large;
   }
 
