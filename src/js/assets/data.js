@@ -1,3 +1,29 @@
+// Guide Object Structure
+/*
+object = {
+ mainsection: {
+  name: var,
+  img: var,
+  articles: [{url: var, title: var, img: var}],
+  subsection: {
+   name: var,
+   img: var,
+   articles: [{url: var, title: var, img: var}]
+  }
+ }
+}
+
+* sections structure
+section: {
+ name: var,
+ img: var,
+ articles: [{url: var, title: var, img: var}]
+ subsections: {
+  ...
+ }
+}
+*/
+
 class guideMenu {
     constructor() {
         // this.name = name;
@@ -54,13 +80,13 @@ bloodborne.addArticle({title: 'التجار', url: 'merchants', img: 'https://i.
 // Equipment Section
 bloodborne.addArticle({title: 'الملابس', url: 'attire', img: 'https://i.suar.me/Am0rN/s', sections: ['equipment']})
 bloodborne.addArticle({title: 'الأسلحة القتالية', url: 'trickWeapon', img: 'https://i.suar.me/NX320/s', sections: ['equipment']})
-bloodborne.addArticle({title: 'الأسلحة النارية', url: 'trickWeapon', img: 'https://i.suar.me/yyKd2/s', sections: ['equipment']})
+bloodborne.addArticle({title: 'الأسلحة النارية', url: 'firesWeapon', img: 'https://i.suar.me/yyKd2/s', sections: ['equipment']})
 
 // Items Section
 // -- Consumables
 bloodborne.addArticle({title: 'عناصر الاسترداد', url: 'reusable_items', img: 'https://i.suar.me/W2ZAd/s', sections: ['items', 'consumables']})
 bloodborne.addArticle({title: 'العناصر الهجومية', url: 'offensive_items', img: 'https://i.suar.me/dZlpz/m', sections: ['items', 'consumables']})
-bloodborne.addArticle({title: 'Coldblood', url: 'coldblood', img: 'https://i.suar.me/8AQ1E/m', sections: ['items', 'consumables']})
+bloodborne.addArticle({title: 'عناصر الـ Coldblood', url: 'coldblood', img: 'https://i.suar.me/8AQ1E/m', sections: ['items', 'consumables']})
 bloodborne.addArticle({title: 'Arcane / Bloodtinge', url: 'arcane_and_bloodtinge', img: 'https://i.suar.me/O8PzM/s', sections: ['items', 'consumables']})
 bloodborne.addArticle({title: 'Multiplayer', url: 'multiplayer', img: 'https://i.suar.me/joK5y/m', sections: ['items', 'consumables']})
 bloodborne.addArticle({title: 'عناصر متنوعة', url: 'miscellaneous', img: 'https://i.suar.me/AmA2N/s', sections: ['items', 'consumables']})
