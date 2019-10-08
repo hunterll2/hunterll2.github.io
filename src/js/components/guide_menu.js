@@ -2,7 +2,7 @@
   Create guide menu (side or index) HTML structre
 */
 
-import { bloodborne } from "../assets/data";
+import { games } from "../assets/data";
 
 // Make Markup
 const createSection = (name, id, level, url) => {
@@ -34,11 +34,14 @@ const createLink = (name, url, img) => `
 `;
 
 // Main Sections
+const bloodborne = games.bloodborne;
 const keys = Object.keys(bloodborne);
 const names = keys.map(key => bloodborne[key].name);
 const imgs = keys.map(key => bloodborne[key].img);
 
 export const createGuideMenu = () => {
+  $(".guideMenu").html("");
+  
   for (let i = 0; i < keys.length; i++) {
     $(".guideMenu").append(createSection(names[i], keys[i], "first", imgs[i]));
   }

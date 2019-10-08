@@ -1,19 +1,5 @@
+import { state } from "../wiki";
 import { games } from "../assets/data";
-
-// Main State
-export const state = {
-    guideMenu: {
-        game: "",
-        mainSection: "",
-        subSection: "",
-        article: ""
-    },
-
-    pageTitle: "",
-    
-    isIndex: () => state.guideMenu.game ? false : true,
-    isGameIndex: () => state.guideMenu.mainSection ? false : true
-}
 
 export const setGuideMenu = () => {
     // Set Game Name
@@ -47,8 +33,6 @@ export const setPageTitle = () => {
     } else {
         state.pageTitle = getArticleTitle();
     }
-
-    console.log(state)
 }
 
 /* Private Functions */

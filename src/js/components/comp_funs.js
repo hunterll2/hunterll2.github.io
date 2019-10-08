@@ -145,7 +145,7 @@ export const pathFun = event => {
     };
 }
 
-/* ==================== Fetch Pages ==================== */
+/* ==================== Fetch Pages ==================== 
 function fetchPage() {
     if (location.hash && !location.hash.startsWith('#_')) {
         const $El = $(`#gameNav a[href="${window.location.hash}"]`);
@@ -205,3 +205,4 @@ window.addEventListener('load', () => {
         }
     };
 });
+*/

@@ -1,15 +1,31 @@
 import "../scss/wiki.scss";
 import { DOM } from "./assets/dom";
-import { state, setGuideMenu, setPageTitle } from "./components/setter";
-import { insertPageTitle } from "./components/inserter";
+import { setGuideMenu, setPageTitle } from "./assets/setter";
+import { insertPageContent } from "./assets/inserter";
+
+// Main State
+export const state = {
+    guideMenu: {
+        game: "",
+        mainSection: "",
+        subSection: "",
+        article: ""
+    },
+
+    pageTitle: "",
+    
+    isIndex: () => state.guideMenu.game ? false : true,
+    isGameIndex: () => state.guideMenu.mainSection ? false : true,
+    indexFlag: true
+}
 
 function start() {
     setGuideMenu();
     setPageTitle();
-    insertPageTitle();
+    insertPageContent();
 }
 
-$(window).on("hashchange load", () => start())
+$(window).on("hashchange load", () => start());
 
 /* ============================================================================
        =================== PC Module ===================
