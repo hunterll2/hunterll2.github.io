@@ -1,11 +1,10 @@
 import { DOM } from "../assets/dom";
-// import { async } from "q";
 
 /* Functions of components
 - Active and unactive side nav
 - List guide menu
 - Grid guide menu
-- Fetch pages
+- Fetch pages (maybe delete)
 - Article nav
 */
 

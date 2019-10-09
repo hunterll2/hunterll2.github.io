@@ -2,8 +2,6 @@ import axios from "axios";
 import { DOM } from "./dom";
 import { state } from "../wiki";
 import { createGuideMenu } from "../components/guide_menu";
-import { guideMenuFun } from "../components/comp_funs";
-import { pathFun } from "../components/comp_funs";
 import * as components from "../components/components";
 
 export const insertPageContent = async () => {
@@ -32,24 +30,18 @@ function insertComponents(pageType) {
     
     if (pageType === "index") {
         insertGuideMenu("index");
-        
+
         state.indexFlag = true;
     } else if (state.indexFlag && pageType === "article") {
+        insertEditor();
         insertGuideMenu("side");
         insertEditTools();
         hideSignForm();
         insertFooter();
-        
+
         // here must deal with "flag", to ensure that componts not insrted twice
         state.indexFlag = false;
     }
-    
-    setEventsListener();
-}
-
-function setEventsListener() {
-    $('.guideMenu').find('button').click(guideMenuFun);
-    $('.path').click(pathFun);
 }
 
 /*  */
@@ -57,7 +49,7 @@ function insertGuideMenu(type) {
     if (type === "index") {
         $(DOM.main.main).find("article").html(components.guideMenu("index"));
     } else {
-        $(DOM.aside.main).prepend(components.guideMenu("side"));
+        $(DOM.aside.main).find(".sideNavs").prepend(components.guideMenu("side"));
     }
     
     createGuideMenu();
@@ -69,6 +61,10 @@ function hideSignForm() {
 
 function insertEditTools() {
     $(DOM.main.header).find("#editTools").prepend(components.editTools());
+}
+
+function insertEditor() {
+    $(DOM.main.header).find("nav#mainNav").after(components.editor());
 }
 
 function insertFooter() {

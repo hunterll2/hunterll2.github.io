@@ -71,7 +71,7 @@ bloodborne.addSubSection('items', 'materials', 'المواد', 'https://i.suar.m
 
 // Game World Section
 bloodborne.addArticle({title: 'عن اللعبة', url: 'about_game', img: 'https://i.suar.me/ooWNP/s', sections: ['gameWorld']});
-bloodborne.addArticle({title: 'الصياد', url: 'hunter', img: 'https://i.suar.me/JLWEX/s', sections: ['gameWorld']})
+bloodborne.addArticle({title: 'الصياد', url: 'the_hunter', img: 'https://i.suar.me/JLWEX/s', sections: ['gameWorld']})
 bloodborne.addArticle({title: 'المناطق', url: 'locations', img: 'https://i.suar.me/l4Kvl/s', sections: ['gameWorld']})
 bloodborne.addArticle({title: 'الأعداء', url: 'enemies', img: 'https://i.suar.me/z078x/s', sections: ['gameWorld']})
 bloodborne.addArticle({title: 'الزعماء', url: 'bosses', img: 'https://i.suar.me/ZqG8p/s', sections: ['gameWorld']})
