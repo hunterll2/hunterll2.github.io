@@ -27,8 +27,6 @@ function start() {
     
     insertPageContent();
     
-    setEventsListener();
-
     guideMenuActivate();
 }
 

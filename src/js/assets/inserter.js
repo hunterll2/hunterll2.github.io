@@ -3,8 +3,9 @@ import { DOM } from "./dom";
 import { state } from "../wiki";
 import { createGuideMenu } from "../components/guide_menu";
 import * as components from "../components/components";
+import { setEventsListener } from "./eventsHandler";
 
-export const insertPageContent = async () => {
+export const insertPageContent = () => {
     insertPageTitle();
 
     if (state.isGameIndex()) {
@@ -38,7 +39,10 @@ function insertComponents(pageType) {
         insertEditTools();
         hideSignForm();
         insertFooter();
-
+        
+        // set events listener after added all the components
+        setEventsListener();
+        
         // here must deal with "flag", to ensure that componts not insrted twice
         state.indexFlag = false;
     }
