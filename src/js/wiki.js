@@ -2,7 +2,6 @@ import "../scss/wiki.scss";
 import { DOM } from "./assets/dom";
 import { setGuideMenu, setPageTitle } from "./assets/setter";
 import { insertPageContent } from "./assets/inserter";
-import { setEventsListener } from "./assets/eventsHandler";
 
 // Main State
 export const state = {
@@ -22,12 +21,14 @@ export const state = {
 }
 
 function start() {
-    setGuideMenu();
-    setPageTitle();
-    
-    insertPageContent();
-    
-    guideMenuActivate();
+    if (!location.hash.startsWith("#_")) {
+        setGuideMenu();
+        setPageTitle();
+        
+        insertPageContent();
+        
+        guideMenuActivate();
+    }
 }
 
 $(window).on("hashchange load", () => start());

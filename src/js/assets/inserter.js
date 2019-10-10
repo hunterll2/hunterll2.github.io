@@ -4,6 +4,7 @@ import { state } from "../wiki";
 import { createGuideMenu } from "../components/guide_menu";
 import * as components from "../components/components";
 import { setEventsListener } from "./eventsHandler";
+import { setTitlesId } from "../components/articleNav";
 
 export const insertPageContent = () => {
     insertPageTitle();
@@ -23,20 +24,22 @@ const insertPageTitle = () => {
 const insertArticle = async () => {
     if (!state.isGameIndex()) {
         const page = await axios(`./articles/${state.guideMenu.article}.html`); // must url (in browser) end by / !
-        $(DOM.main.main).find('article').html(page.data);
+
+        $(DOM.main.main).find('article').html(setTitlesId(page.data));
     }
 }
 
 function insertComponents(pageType) {
-    
     if (pageType === "index") {
         insertGuideMenu("index");
-
+        setEventsListener();
+        
         state.indexFlag = true;
     } else if (state.indexFlag && pageType === "article") {
         insertEditor();
-        insertGuideMenu("side");
         insertEditTools();
+        insertGuideMenu("side");
+        insertArticleNav();
         hideSignForm();
         insertFooter();
         
@@ -48,7 +51,15 @@ function insertComponents(pageType) {
     }
 }
 
-/*  */
+/* Specific functions */
+function insertEditor() {
+    $(DOM.main.header).find("nav#mainNav").after(components.editor());
+}
+
+function insertEditTools() {
+    $(DOM.main.header).find("#editTools").prepend(components.editTools());
+}
+
 function insertGuideMenu(type) {
     if (type === "index") {
         $(DOM.main.main).find("article").html(components.guideMenu("index"));
@@ -59,16 +70,12 @@ function insertGuideMenu(type) {
     createGuideMenu();
 }
 
+function insertArticleNav() {
+    $(DOM.aside.main).find(".sideNavs").append(components.articleNav);
+}
+
 function hideSignForm() {
     $("#signForm").addClass("hidden");
-}
-
-function insertEditTools() {
-    $(DOM.main.header).find("#editTools").prepend(components.editTools());
-}
-
-function insertEditor() {
-    $(DOM.main.header).find("nav#mainNav").after(components.editor());
 }
 
 function insertFooter() {

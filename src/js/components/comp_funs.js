@@ -25,9 +25,9 @@ const init_module = {
 };
 
 /* ==================== Active and unactive side nav ==================== */
-$(DOM.aside.main).find("nav h2").click(function (event) {
+export const sideNavsFun = event => {
     const $curTarget = $(event.currentTarget).parent();
-
+    
     if ($curTarget.hasClass("active")) {
         init_module.sideNavs();
         init_module.gameNav();
@@ -37,7 +37,10 @@ $(DOM.aside.main).find("nav h2").click(function (event) {
     } else {
         $curTarget.addClass("active").siblings("nav").addClass("unactive");
     }
-});
+}
+
+// $(DOM.aside.main).find(".sideNavs").click(function (event) {
+// });
 
 /* ==================== Game Nav ==================== */
 const init = {
@@ -143,65 +146,3 @@ export const pathFun = event => {
         $(".boxes .menu__level--2nd").prev("button").removeClass("active");
     };
 }
-
-/* ==================== Fetch Pages ==================== 
-function fetchPage() {
-    if (location.hash && !location.hash.startsWith('#_')) {
-        const $El = $(`#gameNav a[href="${window.location.hash}"]`);
-
-        // active cur article
-        $("#gameNav a").removeClass("activeBtn");
-        $El.addClass('activeBtn');
-
-        // fetch page and set data
-        const articleName = $El.text();
-        const articleURL = "/wiki/bloodborne/articles/" + window.location.hash.replace('#', '') + ".html";
-        const commentsCount = 16;
-
-        $("#titleBar").find("h1").text(articleName);
-        $("#commentsCount").text(commentsCount);
-        $("body > main").find("article").load(articleURL, (response, status, xhr) => {
-            if (status == 'error') {
-                alert('error');
-            } else {
-                // update article nav
-                const elements = Array.from($('article h2'));
-
-                $('#articleNav').removeClass('hidden');
-                $('#articleNav > ul').empty();
-                elements.forEach((el, i) => {
-                    const hash = $(elements[i]).attr('id');
-                    const title = $(elements[i]).text();
-                    $('#articleNav > ul').append(`<li><a href="#${hash}">${title}</a></li>`);
-                });
-            }
-        });
-    }
-}
-
-window.addEventListener('hashchange', fetchPage);
-
-window.addEventListener('load', () => {
-    if (location.hash && !location.hash.startsWith('#_')) {
-        fetchPage()
-
-        const $El = $(`#gameNav a[href="${window.location.hash}"]`);
-
-        // Game Guide Menu
-        const $El_1st = $El.parents('.menu__1st').attr('id');
-        const $El_2nd = $El.parents('.menu__2nd').attr('id');
-
-        let $El_btn;
-        if ($El.parents('.menu__2nd')) {
-            $El_btn = $(`#${$El_1st}`).children('button');
-            firstMenu($El_btn, true);
-
-            $El_btn = $(`#${$El_2nd}`).children('button');
-            secondMenu($El_btn, true);
-        } else {
-            $El_btn = $(`#${$El_1st}`).children('button');
-            firstMenu($El_btn, true);
-        }
-    };
-});
-*/

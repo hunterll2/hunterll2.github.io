@@ -1,7 +1,6 @@
 import { DOM } from "./dom";
 import { state } from "../wiki";
-import { guideMenuFun } from "../components/comp_funs";
-import { pathFun } from "../components/comp_funs";
+import { sideNavsFun, guideMenuFun, pathFun } from "../components/comp_funs";
 
 // init Functions
 const init = () => {
@@ -40,6 +39,7 @@ const btnFunctions = {
     showSearchNav: () => {
         $("#mainNav").addClass("hiddenToUp");
         $("#searchNav").removeClass("hiddenToUp");
+        $("#searchNav").children("input").focus();
     },
     fullScreen: function () {
         $(this).toggleClass("activeBtn");
@@ -139,6 +139,7 @@ function eventsHandler(event) {
 
 export const setEventsListener = () => {
     // Add Event Handler [special Buttons]
+    $('.sideNavs').find("h2").click(sideNavsFun);
     $('.guideMenu').find('button').click(guideMenuFun);
     $('.path').click(pathFun);
 

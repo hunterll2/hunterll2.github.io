@@ -40,8 +40,6 @@ const names = keys.map(key => bloodborne[key].name);
 const imgs = keys.map(key => bloodborne[key].img);
 
 export const createGuideMenu = () => {
-  $(".guideMenu").html("");
-  
   for (let i = 0; i < keys.length; i++) {
     $(".guideMenu").append(createSection(names[i], keys[i], "first", imgs[i]));
   }
