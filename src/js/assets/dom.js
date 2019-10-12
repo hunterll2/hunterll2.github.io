@@ -18,8 +18,21 @@ export const DOM = {
     tools: {
         siteTools: "#siteTools",
         editTools: "#editTools",
-        artilceTools: "#articleTools",
+        articleTools: "#articleTools",
         controlTools: "#controlTools",
+        
         allTools: "#siteTools, #editTools, #articleTools, #controlTools"
+    },
+    components: {
+        editor_add: "#editor_add",
+        editor_edit: "#editor_edit",
+        // editTools: "#editTools",
+        // articleTools: "#articleTools",
+        gameNav: "#gameNav",
+        articleNav: "#articleNav",
+        signForm: "#signForm",
+        // siteTools: "#siteTools",
+
+        allComponents: `#gameNav, #signForm, #editor_add, #editor_edit, #articleNav`
     }
 };

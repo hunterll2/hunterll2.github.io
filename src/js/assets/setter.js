@@ -1,7 +1,15 @@
 import { state } from "../wiki";
 import { games } from "../assets/data";
 
-export const setGuideMenu = () => {
+export const setState = () => {
+    // 1st set the guide menu
+    setGuideMenu();
+
+    // then based on that set the page title
+    setPageTitle();
+}
+
+const setGuideMenu = () => {
     // Set Game Name
     for (let game of getGamesList()) {
         if (location.pathname.includes(game))
@@ -18,7 +26,7 @@ export const setGuideMenu = () => {
     state.guideMenu.article = getArticleName();
 }
 
-export const setPageTitle = () => {
+const setPageTitle = () => {
     /* Set Page Title based on Guide Menu */
     
     // if its index -> set a static title

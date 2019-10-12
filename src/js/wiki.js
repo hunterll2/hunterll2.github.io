@@ -1,7 +1,7 @@
 import "../scss/wiki.scss";
 import { DOM } from "./assets/dom";
-import { setGuideMenu, setPageTitle } from "./assets/setter";
-import { insertPageContent } from "./assets/inserter";
+import { setState } from "./assets/setter";
+import { insertPageContent, insertComponents } from "./assets/inserter";
 
 // Main State
 export const state = {
@@ -13,27 +13,70 @@ export const state = {
     },
 
     pageTitle: "",
+
+    prevPage: 0,
+    curPage: 0,
     
     isIndex: () => state.guideMenu.game ? false : true,
     isGameIndex: () => state.guideMenu.mainSection ? false : true,
-    indexFlag: true,
-    smallScreen: $("#screenSizeIndicator").is(":visible")
+
+    // can't use here a function for unkonwn reason
+    isSmallScreen: $("#screenSizeIndicator").is(":visible")
 }
 
 function start() {
-    if (!location.hash.startsWith("#_")) {
-        setGuideMenu();
-        setPageTitle();
+    console.log('new start')
+    
+    setState();
+
+    insertPageContent();
+
+    insertComponents();
         
-        insertPageContent();
-        
-        guideMenuActivate();
-    }
+    guideMenuActivate();
 }
 
-$(window).on("hashchange load", () => start());
+function update() {
+    console.log("restart")
+    
+    // set the page type before update the state
+    state.prevPage = determinePageType(); 
+    
+    setState();
+    
+    // set the page type after update the state
+    state.curPage = determinePageType();
+    console.log(`prev: ${state.prevPage} - cur: ${state.curPage}`);
+    
+    insertPageContent();
 
-// test
+    // To prevent of UPDATING the same component twice,
+    // compare between the prevs and cur page type
+    if (state.curPage !== state.prevPage) insertComponents();
+    
+    guideMenuActivate();
+}
+
+function determinePageType() {
+    /** Determine the page state based on cur state
+     * Type 1: Game Index
+     * Type 3: Game Index on small screen
+     * Type 2: Game Article
+     * Type 4: Game Article on small screen
+     */
+
+    let pageType;
+    
+    switch(true) {
+        case state.isGameIndex() && !state.isSmallScreen: pageType = 1; break;
+        case state.isGameIndex() && state.isSmallScreen: pageType = 3; break;
+        case !state.isGameIndex() && !state.isSmallScreen: pageType = 2; break;
+        case !state.isGameIndex() && state.isSmallScreen: pageType = 4; break;
+    }
+
+    return pageType;
+}
+
 function guideMenuActivate() {
     // activate elemnts of SIDE guide menu based on cur state
     // problem 1: if state not defined, elements disapppear
@@ -56,6 +99,14 @@ function guideMenuActivate() {
         $(`li#${subSectionName}`).children("ul").removeClass("hidden");
     }
 }
+
+$(window).on("load", () => {
+    if (!location.hash.startsWith("#_")) start();
+});
+
+$(window).on("hashchange", () => {
+    if (!location.hash.startsWith("#_")) update();
+});
 
 /* ============================================================================
        =================== PC Module ===================
@@ -88,21 +139,13 @@ $("input, textarea").focusout((event) => {
 // Phone Nodule: for screen from 320px to 480px.
 
 /* ==================== Global ==================== */
-if (state.smallScreen) {
+if (state.isSmallScreen) {
     transformToSmallScreen();
 }
 
 function transformToSmallScreen() {
-    // Show
-    $("#asideBtn").removeClass("hidden");
-
-    // Move
-    $("#siteTools").prependTo(DOM.main.footer);
-    $("#signForm").appendTo(DOM.main.main);
-
-    // Remove
-    $(DOM.aside.footer).remove();
-    $(DOM.aside.main).find("#articleNav").remove();
+    // Hide
+    $(DOM.aside.footer).hide();
 
     // Disabled
     $(document).tooltip({ disabled: true });

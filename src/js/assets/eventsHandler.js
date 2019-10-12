@@ -12,7 +12,7 @@ const init = () => {
     $("#searchNav, #editor_add, #editor_edit, #alertsBar").addClass("hiddenToUp");
 
     // hide
-    if (!state.isIndex() && !state.isGameIndex()) $("#signForm").addClass("hidden");
+    $("#signForm").addClass("hidden");
 
     // slide Down
     $("#mainNav, #titleBar").removeClass("hiddenToUp");
@@ -122,7 +122,7 @@ function eventsHandler(event) {
 
     // Do Button function
     // 1. determine functions base
-    let functions = (state.smallScreen) ? btnFunctions.smallScreen : btnFunctions;
+    let functions = (state.isSmallScreen) ? btnFunctions.smallScreen : btnFunctions;
 
     // 2. determine function action
     if (ID === "asideBtn") functions.showAside();
@@ -145,7 +145,7 @@ export const setEventsListener = () => {
 
     const specialBtns = $("#fullScreenBtn, #goUpBtn, #overlay");
     $(DOM.tools.siteTools).children("#fullScreenBtn").click(btnFunctions.fullScreen);
-    $(DOM.tools.artilceTools).children("#goUpBtn").click(btnFunctions.goUp);
+    $(DOM.tools.articleTools).children("#goUpBtn").click(btnFunctions.goUp);
     $(DOM.tools.controlTools).children("#overlay").click(init);
 
     // Add Event Handler
