@@ -69,6 +69,37 @@
   }
 
   /* == Comments [Section] == */
+  /* Guide Menu */
+  #guideMenuBox {
+    h2 {
+      background: none;
+    }
+
+    .path {
+      display: block;
+      padding: 0 0.5rem 0.5rem 0;
+    }
+  }
+
+  .boxes {
+    display: block;
+    
+    > li {
+      button {
+        width: 60%;
+      }
+    }
+
+    .menu__level--1st,
+    .menu__level--2nd {
+      a,
+      button {
+        width: 140px;
+      }
+    }
+  }
+  
+
   /* Add Comment [Form] */
   #addComment {
     display: block;
@@ -93,8 +124,18 @@
   }
 
   /* ===== Main Footer ===== */
+  footer {
+    justify-content: flex-start !important;
+  }
+
   #siteTools {
+    // flex-grow: 1;
+    float: right;
+  }
+  
+  #articleTools {
     flex-grow: 1;
+    justify-content: flex-end;
   }
 
   #signFormBtn {

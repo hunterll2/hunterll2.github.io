@@ -132,6 +132,13 @@ function eventsHandler(event) {
 };
 
 export const setEventsListener = () => {
+    // FOR NOW
+    $("h2").click(event => {
+        const curTarget = $(event.currentTarget).next("div");
+        $(DOM.main.main).find("article").children("div").not(curTarget).hide();
+        $(event.currentTarget).next("div").toggle();
+    })
+
     // Add Event Handler [special Buttons]
     $('.sideNavs').find("h2").click(sideNavsFun);
     $('.guideMenu').find('button').click(guideMenuFun);
