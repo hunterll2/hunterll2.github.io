@@ -5,7 +5,7 @@ import { sideNavsFun, guideMenuFun, pathFun } from "../components/comp_funs";
 // init Functions
 const init = () => {
     // unactivate
-    $(DOM.tools.allTools).children("button").not("#fullScreenBtn").removeClass("activeBtn");
+    $(DOM.tools.allTools).children("button").removeClass("activeBtn");
     $(".sideNavs").removeClass("unactive");
 
     // slide Up
@@ -26,8 +26,11 @@ const init = () => {
     // Small Screen
     $("body").removeClass("showAside");
     $("#overlay").hide();
-    $(DOM.tools.editTools).show();
-    $(DOM.main.footer).find("button").not("#fullScreenBtn, #searchBtn").show();
+    $(DOM.main.header).removeClass("unactive");
+    $(DOM.main.footer).show();
+
+    // inti from read mode function
+    $(DOM.main.footer).find("button").not("#searchBtn").show();
 };
 
 const btnFunctions = {
@@ -36,23 +39,11 @@ const btnFunctions = {
         $("#signForm").removeClass("hidden");
         $(DOM.aside.main).find(".sideNavs").addClass("unactive");
     },
+
     showSearchNav: () => {
         $("#mainNav").addClass("hiddenToUp");
         $("#searchNav").removeClass("hiddenToUp");
         $("#searchNav").children("input").focus();
-    },
-    fullScreen: function () {
-        $(this).toggleClass("activeBtn");
-
-        if ($(this).hasClass("activeBtn")) {
-            document.documentElement.requestFullscreen();
-            $(this).find("i").removeClass("fa-expand").addClass("fa-compress");
-            $(this).attr("title", "الخروج من وضع ملئ الشاشة");
-        } else {
-            document.exitFullscreen();
-            $(this).find("i").removeClass("fa-compress").addClass("fa-expand");
-            $(this).attr("title", "عرض الموقع بوضع ملئ الشاشة");
-        }
     },
 
     // Edit Tools
@@ -60,25 +51,27 @@ const btnFunctions = {
         $("#mainNav").addClass("hiddenToUp");
         $("#editor_edit, #editor_add").removeClass("hiddenToUp");
         $("body").addClass("fullPage");
-        $(DOM.main.footer).find("button").hide();
+        $(DOM.main.footer).hide();
     },
+
     historyBtn: () => {
         $("#articleHistory").removeClass("hidden").siblings().addClass("hidden");
     },
+
     deleteBtn: () => {
         $("#alertsBar").removeClass("hiddenToUp");
-        // $("#alertsBar").html('<input type="text" class="rtl" placeholder="الرجاء توضيح سبب الحذف">');
-        // $("#alertsBar").append('<button>إرسال طلب حذف</button>');
     },
 
-    // article Tools
+    // Article Tools
     showComments: () => {
         $("#articleComments").removeClass("hidden").siblings().addClass("hidden");
         btnFunctions.goUp();
     },
+
     goUp: () => {
         $(DOM.main.main).scrollTop(0);
     },
+    
     readMode: () => {
         $("#mainNav").addClass("hiddenToUp");
         $("body").addClass("fullPage");
@@ -89,9 +82,10 @@ const btnFunctions = {
         showAside: () => {
             $("body").addClass("showAside");
             $("#overlay").show();
+            
             btnFunctions.showSearchNav();
-            $(DOM.tools.editTools).hide();
-            $(DOM.main.footer).find("button").not("#asideBtn").hide();
+            $(DOM.main.header).addClass("unactive");
+            $(DOM.main.footer).hide();
         },
         showSignForm: () => {
             $("#signForm").removeClass("hidden").siblings().addClass("hidden");
@@ -143,8 +137,7 @@ export const setEventsListener = () => {
     $('.guideMenu').find('button').click(guideMenuFun);
     $('.path').click(pathFun);
 
-    const specialBtns = $("#fullScreenBtn, #goUpBtn, #overlay");
-    $(DOM.tools.siteTools).children("#fullScreenBtn").click(btnFunctions.fullScreen);
+    const specialBtns = $("#goUpBtn, #overlay");
     $(DOM.tools.articleTools).children("#goUpBtn").click(btnFunctions.goUp);
     $(DOM.tools.controlTools).children("#overlay").click(init);
 

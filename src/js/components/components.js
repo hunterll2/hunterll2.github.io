@@ -88,7 +88,7 @@ export const signForm = state => `
 </section>
 `;
 
-export const siteTools = type => `
+export const siteTools = (type) => `
 <div id="siteTools">
     ${type === "phone" ? '<button class="icon" id="asideBtn"><i class="fas fa-bars"></i></button>' : ''}
     <button id="signFormBtn" title="تسجيل الدخول / التسجيل في الموقع"><i class="fas fa-user"></i><var>المستخدم</var></button>

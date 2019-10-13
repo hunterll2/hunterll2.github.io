@@ -4,7 +4,7 @@ import { state } from "../wiki";
 import { createGuideMenu } from "../components/guide_menu";
 import * as components from "../components/components";
 import { setEventsListener } from "./eventsHandler";
-import { setTitlesId } from "../components/articleNav";
+import { setTitlesId, createArticleNav } from "../components/articleNav";
 
 /** Module Functions:
  * Insert Page Title & Content
@@ -16,18 +16,22 @@ import { setTitlesId } from "../components/articleNav";
  * overwrite of components
  */
 
-export const insertPageContent = () => {
-    insertPageTitle();
-    insertArticle();
-}
-
-const insertPageTitle = () => {
+export const insertPageTitle = () => {
     $(DOM.main.header).find("h1").text(state.pageTitle);
 }
 
-const insertArticle = async () => {
+export const insertArticle = async () => {
+    try {
         const page = await axios(`./articles/${state.guideMenu.article}.html`); // must url (in browser) end by / !
         $(DOM.main.main).find('article').html(setTitlesId(page.data));
+
+        state.pageExist = true;
+    } catch(error) {
+        const page = await axios(`./error404.html`);
+        $(DOM.main.main).find('article').html(page.data);
+
+        state.pageExist = false;
+    }
 }
 
 export const insertComponents = () => {
@@ -51,13 +55,13 @@ export const insertComponents = () => {
     // Article components strucuture
     } else {
         insertEditor();
-        insertEditTools("edit");
-        insertArticleTools();
+        (state.pageExist) ? insertEditTools("edit") : insertEditTools("add");
+        if (state.pageExist) insertArticleTools();
 
         if (!state.isSmallScreen) {
-            insertGuideMenu("aside", "unactive");
+            (state.pageExist) ? insertGuideMenu("aside", "unactive") : insertGuideMenu("aside", "active");
             insertSignForm("aside", "unvisible");
-            insertArticleNav();
+            if (state.pageExist) insertArticleNav();
             insertSiteTools("aside");
         } else {
             insertGuideMenu("aside", "active");
@@ -70,6 +74,7 @@ export const insertComponents = () => {
     setEventsListener();
 }
 
+/* Specific functions */
 const removeAllTools = () => {
     $(DOM.tools.allTools).not(DOM.tools.controlTools).remove();
 }
@@ -78,7 +83,6 @@ const removeAllComponents = () => {
     $(DOM.components.allComponents).remove();
 }
 
-/* Specific functions */
 function insertEditor() {
     $(DOM.main.header).find("#mainNav").after(components.editor());
 }
@@ -88,12 +92,12 @@ function insertEditTools(type) {
 }
 
 function insertArticleTools() {
-    $(DOM.main.footer).append(components.articleTools);
+    $(DOM.main.footer).append(components.articleTools());
 }
 
-function insertGuideMenu(position, state) {
+function insertGuideMenu(position, elState) {
     if (position === "aside") {
-        $(DOM.aside.main).find(".sideNavs").prepend(components.guideMenu("side", state));
+        $(DOM.aside.main).find(".sideNavs").prepend(components.guideMenu("side", elState));
     } else {
         $(DOM.main.main).find("article").append(components.guideMenu("index"));
     }
@@ -103,19 +107,22 @@ function insertGuideMenu(position, state) {
 
 function insertArticleNav() {
     $(DOM.aside.main).find(".sideNavs").append(components.articleNav);
+
+    createArticleNav();
 }
 
-function insertSignForm(position, state) {
+function insertSignForm(position, elState) {
     if (position === "aside") {
-        $(DOM.aside.main).append(components.signForm(state));
+        $(DOM.aside.main).append(components.signForm(elState));
     } else {
-        $(DOM.main.main).append(components.signForm(state));
+        $(DOM.main.main).append(components.signForm(elState));
     }
 }
 
 function insertSiteTools(position) {
     if (position === "aside") {
         $(DOM.aside.footer).append(components.siteTools());
+        
         if (state.isGameIndex()) $("#signFormBtn").addClass("activeBtn"); // FOR NOW
     } else {
         $(DOM.main.footer).prepend(components.siteTools("phone"));

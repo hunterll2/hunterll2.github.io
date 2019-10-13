@@ -3,6 +3,8 @@
 */
 
 export const setTitlesId = (article) => {
+    /* Reformat an article to add to each H2 title an ID */
+
     // First thing is set the counter
     let term = "<h2>", termWidth = term.length, curIndex, i = 0;
     let counter = 0;
@@ -35,13 +37,13 @@ export const setTitlesId = (article) => {
     }
 
     // Replace & Create Article Nav
+    articleTitlesList = []; // FOR NOW
     for (let i = 0; i < counter; i++) {
         article = article.replace(`<h2>${contents[i]}</h2>`, `<h2 id="_${hashs[i]}">${contents[i]}</h2>`);
 
         getArticleNavItems(hashs[i], contents[i]);
     }
 
-    createArticleNav();
     return article;
 }
 
@@ -56,15 +58,17 @@ const getArticleNavItems = (hash, content) => {
     articleTitlesList.push(newMarkup);
 }
 
-const createArticleNav = () => {
+export const createArticleNav = () => {
+    /* based on  "articleTitlesList" array, insert articleNav Elements onto DOM */
+
     // first empty the container
     $("#articleNav").find("ul").empty();
     
+    // then insert elements
     for (let title of articleTitlesList) {
         $("#articleNav").find("ul").append(title);
     }
     
-    // empty the aryy after put all el(s); for futuer use
-    articleTitlesList = [];
-
+    // empty the aryy after insert all el(s); for futuer reuse
+    articleTitlesList = []; // FOR NOW
 }

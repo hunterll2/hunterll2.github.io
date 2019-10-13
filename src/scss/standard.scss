@@ -193,7 +193,9 @@ input[type="email"]:focus {
   color: $gray;
 }
 
-.unactive ul {
+.unactive ul,
+.unactive a,
+.unactive button {
   display: none;
 }
 
@@ -229,7 +231,7 @@ input.rtl:focus {
 #overlay {
   width: calc(100% - 160px);
   height: calc(100% - 90px);
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.0);
   position: fixed;
   left: 0px;
   bottom: 0px;
