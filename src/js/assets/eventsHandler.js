@@ -43,7 +43,7 @@ const btnFunctions = {
     showSearchNav: () => {
         $("#mainNav").addClass("hiddenToUp");
         $("#searchNav").removeClass("hiddenToUp");
-        $("#searchNav").children("input").focus();
+        if (!state.isSmallScreen) $("#searchNav").children("input").focus();
     },
 
     // Edit Tools
@@ -75,6 +75,12 @@ const btnFunctions = {
     readMode: () => {
         $("#mainNav").addClass("hiddenToUp");
         $("body").addClass("fullPage");
+    },
+
+    openParagraph: () => {
+        const curTarget = $(event.currentTarget).next("div");
+        $(DOM.main.main).find("article").children("div").not(curTarget).hide();
+        $(event.currentTarget).next("div").toggle();
     },
 
     // Buttons functions for small screen
@@ -133,11 +139,8 @@ function eventsHandler(event) {
 
 export const setEventsListener = () => {
     // FOR NOW
-    $("h2").click(event => {
-        const curTarget = $(event.currentTarget).next("div");
-        $(DOM.main.main).find("article").children("div").not(curTarget).hide();
-        $(event.currentTarget).next("div").toggle();
-    })
+    if (state.isSmallScreen)
+    $(DOM.main.main).find("article").children("h2").click(btnFunctions.openParagraph);
 
     // Add Event Handler [special Buttons]
     $('.sideNavs').find("h2").click(sideNavsFun);

@@ -60,7 +60,15 @@ function guideMenuActivate() {
 }
 
 $(window).on("load hashchange", () => {
-    if (!location.hash.startsWith("#_")) start();
+    if (!location.hash.startsWith("#_") && !location.href.endsWith("#"))
+        start();
+});
+
+window.addEventListener("load",function() {
+    setTimeout(function(){
+        // This hides the address bar:
+        window.scrollTo(0, 1);
+    }, 0);
 });
 
 /* ============================================================================
