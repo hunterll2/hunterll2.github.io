@@ -4,6 +4,7 @@
 
 **Modifier:**
 - 1# Hidden
+- 2# pulled-[left/right]
 
 # Structural Components
 - Aside
@@ -32,7 +33,38 @@
 - 2# Icons -> just show button icon
 
 # Functional Components
-- Search Form [null, render on #Larger,Fixed Bar]
-- Site Sections [use #LinksGroup, render on #Larger,Fixed Bar]
-- Edit Buttons [use #ButtonsGroup, render on #Normal,Fixed Bar]
-- Notifications [null, render on #Normal,Fixed Bar, with #Hidden Modifier]
+## .bar.larger
+- Search Form
+- Site Sections
+
+## .bar.normal
+- Page Title
+- Edit Buttons [.pulled-left]
+
+## .bar.normal.hidden
+- Notifications
+
+## .bar.full.slider
+- Game Guide
+
+## .box.container
+- Page Content
+- Page History
+- Page Comments
+
+## .bar.normal.floater
+- View Buttons [pulled-left]
+- Site Buttons [pulled-right]
+
+## .box.container
+- Site Logo
+
+## .box.titled
+- Article Guide
+
+## .box.titled.hidden
+- Sign Form
+- User Profile
+
+## bar.normal
+- User Buttons
