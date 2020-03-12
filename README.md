@@ -6,6 +6,7 @@
 - 3# Smaller
 - 4# Slider
 - 5# Floater
+
 **Modifier:**
 - 1# Hidden
 
@@ -13,6 +14,7 @@
 **Types:**
 - 1# Container
 - 2# Titled
+
 **Modifier:**
 - 1# Hidden
 
